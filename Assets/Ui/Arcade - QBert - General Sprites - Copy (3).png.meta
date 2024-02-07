@@ -1,0 +1,451 @@
+fileFormatVersion: 2
+guid: d14035d97f9056342a5cab14547700c4
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Arcade - QBert - General Sprites - Copy (3)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 40
+        width: 51
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 003624c9503e4744989e069f18c32343
+      internalID: -441174546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - QBert - General Sprites - Copy (3)_6
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 40
+        width: 51
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e44564d21bd0367458b91b1656cc1d62
+      internalID: -923627299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - QBert - General Sprites - Copy (3)_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 51
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49abaf46bfd1872449fa2912e8cb1625
+      internalID: -1808272427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - QBert - General Sprites - Copy (3)_18
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 32
+        width: 51
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfc1fd633a9ef6c4eb1f974005b594f1
+      internalID: -132053898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - QBert - General Sprites - Copy (3)_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 24
+        width: 51
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87ee2f0f299f5ef4f88cc0a91087ee89
+      internalID: 159983897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - QBert - General Sprites - Copy (3)_30
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 24
+        width: 51
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e54412f45835b41498052f76e538de5b
+      internalID: -830651040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - QBert - General Sprites - Copy (3)_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 51
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a960961e6a79024abedc5650bd4ed40
+      internalID: 67840202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - QBert - General Sprites - Copy (3)_42
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 16
+        width: 51
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b9285c39cbabc4a95c40814a37e470
+      internalID: -33930104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - QBert - General Sprites - Copy (3)_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 51
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f610b6a08347cb444a076b2690dcb783
+      internalID: 678734186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - QBert - General Sprites - Copy (3)_54
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 8
+        width: 51
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 221d90f141d72aa43ac8c62d6ede2cb5
+      internalID: -1457185017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - QBert - General Sprites - Copy (3)_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 51
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d77d4c9ceea7454388a417ca012f1e6
+      internalID: -1450627734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arcade - QBert - General Sprites - Copy (3)_66
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 0
+        width: 51
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a3ebb44fe0c9024e9a9473df3a0f234
+      internalID: 194136964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Arcade - QBert - General Sprites - Copy (3)_0: -441174546
+      Arcade - QBert - General Sprites - Copy (3)_1: -1365423909
+      Arcade - QBert - General Sprites - Copy (3)_10: 1578990792
+      Arcade - QBert - General Sprites - Copy (3)_11: 229829063
+      Arcade - QBert - General Sprites - Copy (3)_12: -1808272427
+      Arcade - QBert - General Sprites - Copy (3)_13: -1769890339
+      Arcade - QBert - General Sprites - Copy (3)_14: -1260534313
+      Arcade - QBert - General Sprites - Copy (3)_15: -1633593527
+      Arcade - QBert - General Sprites - Copy (3)_16: 1597828583
+      Arcade - QBert - General Sprites - Copy (3)_17: 1992305872
+      Arcade - QBert - General Sprites - Copy (3)_18: -132053898
+      Arcade - QBert - General Sprites - Copy (3)_19: 1259778264
+      Arcade - QBert - General Sprites - Copy (3)_2: 1548778609
+      Arcade - QBert - General Sprites - Copy (3)_20: 1740654807
+      Arcade - QBert - General Sprites - Copy (3)_21: -1539217515
+      Arcade - QBert - General Sprites - Copy (3)_22: 1359500294
+      Arcade - QBert - General Sprites - Copy (3)_23: -1393455234
+      Arcade - QBert - General Sprites - Copy (3)_24: 159983897
+      Arcade - QBert - General Sprites - Copy (3)_25: -1995290117
+      Arcade - QBert - General Sprites - Copy (3)_26: 1926358472
+      Arcade - QBert - General Sprites - Copy (3)_27: 48308285
+      Arcade - QBert - General Sprites - Copy (3)_28: -868935032
+      Arcade - QBert - General Sprites - Copy (3)_29: 1687335995
+      Arcade - QBert - General Sprites - Copy (3)_3: 1254360400
+      Arcade - QBert - General Sprites - Copy (3)_30: -830651040
+      Arcade - QBert - General Sprites - Copy (3)_31: -1285629775
+      Arcade - QBert - General Sprites - Copy (3)_32: -1670591930
+      Arcade - QBert - General Sprites - Copy (3)_33: -847281832
+      Arcade - QBert - General Sprites - Copy (3)_34: -1534123015
+      Arcade - QBert - General Sprites - Copy (3)_35: -663342337
+      Arcade - QBert - General Sprites - Copy (3)_36: 67840202
+      Arcade - QBert - General Sprites - Copy (3)_37: -1416176513
+      Arcade - QBert - General Sprites - Copy (3)_38: -266844031
+      Arcade - QBert - General Sprites - Copy (3)_39: -871824146
+      Arcade - QBert - General Sprites - Copy (3)_4: -654835509
+      Arcade - QBert - General Sprites - Copy (3)_40: 352965458
+      Arcade - QBert - General Sprites - Copy (3)_41: -1977869602
+      Arcade - QBert - General Sprites - Copy (3)_42: -33930104
+      Arcade - QBert - General Sprites - Copy (3)_43: 241657393
+      Arcade - QBert - General Sprites - Copy (3)_44: 699172436
+      Arcade - QBert - General Sprites - Copy (3)_45: 799087898
+      Arcade - QBert - General Sprites - Copy (3)_46: -1551043744
+      Arcade - QBert - General Sprites - Copy (3)_47: -687032766
+      Arcade - QBert - General Sprites - Copy (3)_48: 678734186
+      Arcade - QBert - General Sprites - Copy (3)_49: 679702169
+      Arcade - QBert - General Sprites - Copy (3)_5: 1157914284
+      Arcade - QBert - General Sprites - Copy (3)_50: -33880931
+      Arcade - QBert - General Sprites - Copy (3)_51: -1607901743
+      Arcade - QBert - General Sprites - Copy (3)_52: -2092725635
+      Arcade - QBert - General Sprites - Copy (3)_53: 894635050
+      Arcade - QBert - General Sprites - Copy (3)_54: -1457185017
+      Arcade - QBert - General Sprites - Copy (3)_55: -931567507
+      Arcade - QBert - General Sprites - Copy (3)_56: -2122097409
+      Arcade - QBert - General Sprites - Copy (3)_57: 313804073
+      Arcade - QBert - General Sprites - Copy (3)_58: 1715817241
+      Arcade - QBert - General Sprites - Copy (3)_59: -678608868
+      Arcade - QBert - General Sprites - Copy (3)_6: -923627299
+      Arcade - QBert - General Sprites - Copy (3)_60: -1450627734
+      Arcade - QBert - General Sprites - Copy (3)_61: 65387817
+      Arcade - QBert - General Sprites - Copy (3)_62: 1085394681
+      Arcade - QBert - General Sprites - Copy (3)_63: -949299167
+      Arcade - QBert - General Sprites - Copy (3)_64: 1399719922
+      Arcade - QBert - General Sprites - Copy (3)_65: 2018316479
+      Arcade - QBert - General Sprites - Copy (3)_66: 194136964
+      Arcade - QBert - General Sprites - Copy (3)_67: 850320605
+      Arcade - QBert - General Sprites - Copy (3)_68: -960734839
+      Arcade - QBert - General Sprites - Copy (3)_69: 1526813451
+      Arcade - QBert - General Sprites - Copy (3)_7: 1546195694
+      Arcade - QBert - General Sprites - Copy (3)_70: 1414298827
+      Arcade - QBert - General Sprites - Copy (3)_71: 379994601
+      Arcade - QBert - General Sprites - Copy (3)_8: -1567368300
+      Arcade - QBert - General Sprites - Copy (3)_9: -760903101
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
