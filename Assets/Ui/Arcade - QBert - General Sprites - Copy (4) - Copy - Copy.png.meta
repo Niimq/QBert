@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3d2b3ebdcdcec6e4cbf0223c0744745e
+guid: 5541e5c08daf6b94ea2c59911a13df7d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,85 +110,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Arcade - QBert - General Sprites - Copy (2)_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 45
-        width: 44
-        height: 44
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: edf924a89dbc3004ca456d990a96b30c
-      internalID: 1075073555
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Arcade - QBert - General Sprites - Copy (2)_1
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 45
-        width: 44
-        height: 44
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c1bd185aae5967e4cbed4ff3ba127195
-      internalID: -1174250143
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Arcade - QBert - General Sprites - Copy (2)_2
+      name: Arcade - QBert - General Sprites - Copy (4) - Copy - Copy_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 44
-        height: 45
+        width: 8
+        height: 11
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5edc3b61041da2d4cba902dc6be7f82e
-      internalID: -1413010517
+      spriteID: b6e9c041ed2c0e74c875bbb8713db2d9
+      internalID: -1393301206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Arcade - QBert - General Sprites - Copy (2)_3
+      name: Arcade - QBert - General Sprites - Copy (4) - Copy - Copy_1
       rect:
         serializedVersion: 2
-        x: 44
-        y: 1
-        width: 44
-        height: 44
+        x: 8
+        y: 0
+        width: 8
+        height: 11
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 768abbf2595a29c48b74c3d0889530d2
-      internalID: -786266466
+      spriteID: 81c4aef094835ac468ac284ca9c81e57
+      internalID: 740879205
       vertices: []
       indices: 
       edges: []
@@ -204,10 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Arcade - QBert - General Sprites - Copy (2)_0: 1075073555
-      Arcade - QBert - General Sprites - Copy (2)_1: -1174250143
-      Arcade - QBert - General Sprites - Copy (2)_2: -1413010517
-      Arcade - QBert - General Sprites - Copy (2)_3: -786266466
+      Arcade - QBert - General Sprites - Copy (4) - Copy - Copy_0: -1393301206
+      Arcade - QBert - General Sprites - Copy (4) - Copy - Copy_1: 740879205
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

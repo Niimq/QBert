@@ -114,9 +114,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 51.5
-        width: 30.9
-        height: 51.5
+        y: 55
+        width: 31
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 51.5
-        width: 30.9
-        height: 51.5
+        x: 0
+        y: 0
+        width: 31
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +155,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_2
       rect:
         serializedVersion: 2
-        x: 60
-        y: 51.5
-        width: 30.9
-        height: 51.5
+        x: 31
+        y: 0
+        width: 31
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +176,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_3
       rect:
         serializedVersion: 2
-        x: 90
-        y: 51.5
-        width: 30.9
-        height: 51.5
+        x: 62
+        y: 0
+        width: 31
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +197,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_4
       rect:
         serializedVersion: 2
-        x: 120
-        y: 51.5
-        width: 30.9
-        height: 51.5
+        x: 93
+        y: 0
+        width: 30
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +218,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_5
       rect:
         serializedVersion: 2
-        x: 150
-        y: 51.5
-        width: 30.9
-        height: 51.5
+        x: 123
+        y: 55
+        width: 31
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +239,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_6
       rect:
         serializedVersion: 2
-        x: 180
-        y: 51.5
-        width: 30.9
-        height: 51.5
+        x: 123
+        y: 0
+        width: 31
+        height: 55
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,10 +260,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_7
       rect:
         serializedVersion: 2
-        x: 210
-        y: 51.5
-        width: 30.9
-        height: 51.5
+        x: 154
+        y: 55
+        width: 31
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,10 +281,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_8
       rect:
         serializedVersion: 2
-        x: 240
-        y: 51.5
-        width: 30.9
-        height: 51.5
+        x: 185
+        y: 55
+        width: 31
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,10 +302,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_9
       rect:
         serializedVersion: 2
-        x: 270
-        y: 51.5
-        width: 30.9
-        height: 51.5
+        x: 216
+        y: 55
+        width: 31
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,10 +323,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0.5
-        width: 30.9
-        height: 51.5
+        x: 247
+        y: 55
+        width: 31
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,10 +344,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_11
       rect:
         serializedVersion: 2
-        x: 30
-        y: 0.5
-        width: 30.9
-        height: 51.5
+        x: 278
+        y: 55
+        width: 31
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,10 +365,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_12
       rect:
         serializedVersion: 2
-        x: 60
-        y: 0.5
-        width: 30.9
-        height: 51.5
+        x: 31
+        y: 55
+        width: 31
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,7 +376,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bea28616ef933614688827b88b9ba57f
+      spriteID: 3c5f0e8e0777d5f4b8f8babe3bd2c6f0
       internalID: -980980313
       vertices: []
       indices: 
@@ -386,10 +386,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_13
       rect:
         serializedVersion: 2
-        x: 90
-        y: 0.5
-        width: 30.9
-        height: 51.5
+        x: 62
+        y: 55
+        width: 31
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,7 +397,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a03e7a887b3f0be458f5ca6dbaa14783
+      spriteID: c198a62cef014a04387b4c2f4319b7fb
       internalID: 954157455
       vertices: []
       indices: 
@@ -407,10 +407,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_14
       rect:
         serializedVersion: 2
-        x: 120
-        y: 0.5
-        width: 30.9
-        height: 51.5
+        x: 93
+        y: 55
+        width: 30
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,7 +418,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e59cdbf4bdcdce4ba964b9aff69c056
+      spriteID: cc419402042331f449229006a1ee2b1a
       internalID: 1117516913
       vertices: []
       indices: 
@@ -428,10 +428,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_15
       rect:
         serializedVersion: 2
-        x: 150
-        y: 0.5
-        width: 30.9
-        height: 51.5
+        x: 278
+        y: 0
+        width: 31
+        height: 55
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,7 +439,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8087fe1ae7c11884987063bae3bbed39
+      spriteID: c23127b3e15b073498487ae6f4e3c89c
       internalID: 1165228053
       vertices: []
       indices: 
@@ -449,10 +449,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_16
       rect:
         serializedVersion: 2
-        x: 180
-        y: 0.5
-        width: 30.9
-        height: 51.5
+        x: 154
+        y: 0
+        width: 31
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -460,7 +460,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9821a9d669e0c524fbafd9218870f950
+      spriteID: 39fc17d4ef097ff49b4ba69bc2e0f259
       internalID: -2004174640
       vertices: []
       indices: 
@@ -470,10 +470,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_17
       rect:
         serializedVersion: 2
-        x: 210
-        y: 0.5
-        width: 30.9
-        height: 51.5
+        x: 185
+        y: 0
+        width: 31
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -481,7 +481,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32e0e9a4fcc697b4d8e6d6311365ddfc
+      spriteID: d44a522a01c99f64e89cd5941fe9e9a5
       internalID: 1506082448
       vertices: []
       indices: 
@@ -491,10 +491,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_18
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0.5
-        width: 30.9
-        height: 51.5
+        x: 216
+        y: 0
+        width: 31
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -502,7 +502,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac03af4816e500b47b53ba978e564044
+      spriteID: 628bbcdf97676a049a84a26a8efdcf2a
       internalID: 721960408
       vertices: []
       indices: 
@@ -512,10 +512,10 @@ TextureImporter:
       name: Arcade - QBert - General Sprites - Copy - Copy_19
       rect:
         serializedVersion: 2
-        x: 270
-        y: 0.5
-        width: 30.9
-        height: 51.5
+        x: 247
+        y: 0
+        width: 31
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -523,7 +523,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 727a7d44a39b3b14493d5c2d8e7cffa8
+      spriteID: c924e6c10adfc6e42a7e4fbd5f52a9c5
       internalID: -1300334355
       vertices: []
       indices: 
