@@ -14,10 +14,6 @@ public class MainMenu : MonoBehaviour
         LeaderBoard.onClick.AddListener(LoadLeaderBoard);
         Quit.onClick.AddListener(OnApplicationQuit);
     }
-    private void Update()
-    {
-        
-    }
 
     private void LoadGame()
     {
@@ -31,6 +27,13 @@ public class MainMenu : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        Application.Quit(0);
+        // save any game data here
+        #if UNITY_EDITOR
+                // Application.Quit() does not work in the editor so
+                // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                Application.Quit();
+        #endif
     }
 }
