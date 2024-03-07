@@ -1550,7 +1550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
-  blockID: 246
+  blockID: 216
 --- !u!61 &352018148
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3203,7 +3203,7 @@ Transform:
   m_GameObject: {fileID: 680180427}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0032389187, w: 0.99999475}
-  m_LocalPosition: {x: -0.09, y: 4.51, z: 0.15844849}
+  m_LocalPosition: {x: -0.09, y: 4.54, z: 0.15844849}
   m_LocalScale: {x: 3.5416002, y: 3.5416002, z: 3.5416002}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3259,7 +3259,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

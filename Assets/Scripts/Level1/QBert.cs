@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class QBert : MonoBehaviour
@@ -8,6 +9,8 @@ public class QBert : MonoBehaviour
     int LocationID;
 
     Transform Blocktransform;
+
+    static float yOffset = 0.6f;
 
     public List<GameObject> Blocks;
 
@@ -30,7 +33,8 @@ public class QBert : MonoBehaviour
         {
             if (id == Blocks[i].gameObject.GetComponent<Block>().blockID)
             {
-                Blocktransform = Blocks[i].gameObject.GetComponent<Transform>().transform;  
+                Blocktransform = Blocks[i].gameObject.GetComponent<Transform>().transform;
+                transform.position = new Vector3(Blocktransform.position.x, Blocktransform.position.y + yOffset, Blocktransform.position.z);
             }
         }
     }
