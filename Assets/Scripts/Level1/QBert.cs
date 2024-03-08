@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -26,7 +27,7 @@ public class QBert : MonoBehaviour
         GetInputs();
     }
 
-    void CheckLocation(int id) 
+    void CheckLocation(int id)
     {
 
         for (int i = 0; i < Blocks.Count; i++)
@@ -41,23 +42,23 @@ public class QBert : MonoBehaviour
 
     void GetInputs()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Keypad4))
+
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             LocationID /= 3;
             Debug.Log(LocationID);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad6))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             LocationID *= 3;
             Debug.Log(LocationID);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             LocationID *= 2;
             Debug.Log(LocationID);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad8))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             LocationID /= 2;
             Debug.Log(LocationID);
@@ -66,4 +67,5 @@ public class QBert : MonoBehaviour
         CheckLocation(LocationID);
 
     }
+
 }

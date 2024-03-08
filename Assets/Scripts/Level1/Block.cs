@@ -8,11 +8,13 @@ public class Block : MonoBehaviour
     static GameObject QBert;
     SpriteRenderer SpriteRenderer;
 
+    public int Level;
+
     public int blockID; // This ID will be overloaded based off of a pattern
     bool Switch;
 
     void Start()
-    {
+    { 
         Switch = false;
 
         if (QBert == null)
@@ -21,6 +23,7 @@ public class Block : MonoBehaviour
         }
 
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
