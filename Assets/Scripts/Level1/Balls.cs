@@ -32,6 +32,7 @@ public class Balls : MonoBehaviour
     {
         b_itCanSpawn = true;
         b_itCanMove = false;
+        
     }
 
     private void Update()
@@ -43,14 +44,16 @@ public class Balls : MonoBehaviour
             Debug.Log("Reached");
         }
 
-        if (b_itCanMove) 
+        if (b_itCanMove)
         {
-            InvokeRepeating("MoveBallsDown", 10.0f, 10.0f);
+            StartCoroutine(MoveBallsDown());
         }
     }
 
-    void MoveBallsDown()
+    IEnumerator MoveBallsDown()
     {
+        
+
         if (Random.value < 0.5f)
 
             chosenNumber *= 2;
@@ -75,6 +78,9 @@ public class Balls : MonoBehaviour
         }
 
         Debug.Log(chosenNumber);
+        b_itCanMove = false;
+        yield return new WaitForSeconds(5);
+        b_itCanMove = true;
     }
 
     public void Respawn()
