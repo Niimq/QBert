@@ -16,7 +16,7 @@ public class QBert : MonoBehaviour
 
     public GameObject ElevatorA, ElevatorB;
 
-    bool bCheckLocation;
+    bool bCheckLocation, onElevatorA, onElevatorB;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +29,12 @@ public class QBert : MonoBehaviour
     void Update()
     {
         GetInputs();
+
+        if (onElevatorA)
+            OnElevatorA();
+
+        if (onElevatorB)
+            OnElevatorB();
     }
 
     void CheckLocation(int id)
@@ -49,9 +55,9 @@ public class QBert : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (LocationID == 16)
+            if (LocationID == 16 && ElevatorA != null)
             {
-                OnElevatorA();
+                onElevatorA = true;
             }
             else
             { 
@@ -71,9 +77,9 @@ public class QBert : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            if (LocationID == 81)
+            if (LocationID == 81 && ElevatorB != null)
             {
-                OnElevatorB();
+               onElevatorB = true;
             }
             else
             {
@@ -91,7 +97,7 @@ public class QBert : MonoBehaviour
         bCheckLocation = false;
 
         transform.position = new Vector3(ElevatorA.transform.position.x, ElevatorA.transform.position.y +
-            0.3f, ElevatorA.transform.position.z);
+            0.3f, transform.position.z);
     }
     
     void OnElevatorB()
@@ -99,6 +105,17 @@ public class QBert : MonoBehaviour
         bCheckLocation = false;
 
         transform.position = new Vector3(ElevatorB.transform.position.x, ElevatorB.transform.position.y +
-            0.3f, ElevatorB.transform.position.z);
+            0.3f, transform.position.z);
+    }
+
+    public void ExtiElevator()
+    {
+        transform.position = new Vector3(Blocks[0].transform.position.x,
+            Blocks[0].transform.position.y + yOffset, Blocks[0].transform.position.z); // move the Qbert to top most block. 0 in the list
+        LocationID = 1;
+        onElevatorA = false;
+        onElevatorB =false;
+        bCheckLocation = true;
+
     }
 }
