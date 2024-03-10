@@ -12,13 +12,13 @@ public class Balls : MonoBehaviour
 
     [SerializeField] private int value = 1;
 
-    float timeToSpawn = 2;
+    public float MovementSpeedByTime = 3;
 
     int chosenNumber, SpawnBlockID, Level;
 
     Transform MoveID;
 
-    private bool b_itCanSpawn, b_itCanMove;
+    private bool b_itCanMove;
 
     bool OriginalMovementDone, b_InsitCanMove;
 
@@ -32,7 +32,6 @@ public class Balls : MonoBehaviour
 
     private void Start()
     {
-        b_itCanSpawn = true;
         b_itCanMove = true;
         OriginalMovementDone = true;
     }
@@ -80,7 +79,7 @@ public class Balls : MonoBehaviour
         Debug.Log(chosenNumber);
         b_itCanMove = false;
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(MovementSpeedByTime);
         if (Level == 7 || chosenNumber > 729)
         {
             Respawn(); // First Respawn

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class QBert : MonoBehaviour
 {
-    int LocationID;
+    public int LocationID, LevelID;
 
     Transform Blocktransform;
 
@@ -18,11 +18,14 @@ public class QBert : MonoBehaviour
 
     bool bCheckLocation, onElevatorA, onElevatorB;
 
+    public bool ActivateCoiley;
+
     // Start is called before the first frame update
     void Start()
     {
         LocationID = 1;
         bCheckLocation = true;
+        ActivateCoiley = false;
     }
 
     // Update is called once per frame
@@ -35,6 +38,12 @@ public class QBert : MonoBehaviour
 
         if (onElevatorB)
             OnElevatorB();
+
+        if (LevelID == 4)
+        {
+            ActivateCoiley = true;
+        }
+            
     }
 
     void CheckLocation(int id)
@@ -46,6 +55,7 @@ public class QBert : MonoBehaviour
             {
                 Blocktransform = Blocks[i].gameObject.GetComponent<Transform>().transform;
                 transform.position = new Vector3(Blocktransform.position.x, Blocktransform.position.y + yOffset, Blocktransform.position.z);
+                LevelID = Blocks[i].GetComponent<Block>().Level;  
             }
         }
     }
