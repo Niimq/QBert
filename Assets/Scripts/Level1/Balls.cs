@@ -12,7 +12,7 @@ public class Balls : MonoBehaviour
 
     [SerializeField] private int value = 1;
 
-    float timeToSpawn = 15;
+    float timeToSpawn = 2;
 
     int chosenNumber, SpawnBlockID, Level;
 
@@ -75,23 +75,18 @@ public class Balls : MonoBehaviour
                     transform.position = new Vector3(MoveID.position.x, MoveID.position.y + 0.35f);
                 }
             }
-                //transform.position = _spawnPoint.position;
-
-                //Debug.Log(_spawnPoint.position);
         }
 
         Debug.Log(chosenNumber);
         b_itCanMove = false;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         if (Level == 7 || chosenNumber > 729)
         {
-            Respawn(); // Respawn a new ball
+            Respawn();
             Destroy(gameObject); // Destroy the current ball
             OriginalMovementDone = false;
             Debug.Log(OriginalMovementDone);
-            
-          
         }
         else
         {
@@ -101,7 +96,6 @@ public class Balls : MonoBehaviour
 
     IEnumerator MoveInstantiateDown()
     {
-
         if (chosenNumber == 0)
             chosenNumber = 1;
 
