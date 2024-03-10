@@ -83,10 +83,9 @@ public class Balls : MonoBehaviour
         yield return new WaitForSeconds(3);
         if (Level == 7 || chosenNumber > 729)
         {
-            Respawn();
+            Respawn(); // First Respawn
             Destroy(gameObject); // Destroy the current ball
             OriginalMovementDone = false;
-            Debug.Log(OriginalMovementDone);
         }
         else
         {
@@ -164,7 +163,6 @@ public class Balls : MonoBehaviour
             }
         }
         b_InsitCanMove = true;
-        Debug.Log(b_InsitCanMove);
     }
 }
 

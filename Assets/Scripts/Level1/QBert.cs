@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class QBert : MonoBehaviour
 {
-
     int LocationID;
 
     Transform Blocktransform;
@@ -15,10 +14,15 @@ public class QBert : MonoBehaviour
 
     public List<GameObject> Blocks;
 
+    public GameObject ElevatorA, ElevatorB;
+
+    bool bCheckLocation;
+
     // Start is called before the first frame update
     void Start()
     {
         LocationID = 1;
+        bCheckLocation = true;
     }
 
     // Update is called once per frame
@@ -45,8 +49,15 @@ public class QBert : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            LocationID /= 3;
-            Debug.Log(LocationID);
+            if (LocationID == 16)
+            {
+                OnElevatorA();
+            }
+            else
+            { 
+                LocationID /= 3;
+                Debug.Log(LocationID);
+            }  
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -60,12 +71,35 @@ public class QBert : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            LocationID /= 2;
-            Debug.Log(LocationID);
+            if (LocationID == 81)
+            {
+                OnElevatorB();
+            }
+            else
+            {
+                LocationID /= 2;
+                Debug.Log(LocationID);
+            }
+            
         }
-
-        CheckLocation(LocationID);
-
+       
+        if (bCheckLocation)
+        { CheckLocation(LocationID); }
     }
 
+    void OnElevatorA()
+    {
+        bCheckLocation = false;
+
+        transform.position = new Vector3(ElevatorA.transform.position.x, ElevatorA.transform.position.y +
+            0.3f, ElevatorA.transform.position.z);
+    }
+    
+    void OnElevatorB()
+    {
+        bCheckLocation = false;
+
+        transform.position = new Vector3(ElevatorB.transform.position.x, ElevatorB.transform.position.y +
+            0.3f, ElevatorB.transform.position.z);
+    }
 }

@@ -3472,7 +3472,7 @@ Transform:
   m_GameObject: {fileID: 680180427}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0032389187, w: 0.99999475}
-  m_LocalPosition: {x: -0.09, y: 4.54, z: 0.15844849}
+  m_LocalPosition: {x: -0.17, y: 4.08, z: 0.15844849}
   m_LocalScale: {x: 3.5416002, y: 3.5416002, z: 3.5416002}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3581,6 +3581,8 @@ MonoBehaviour:
   - {fileID: 2088784667}
   - {fileID: 1567393535}
   - {fileID: 330223596}
+  ElevatorA: {fileID: 2100619480}
+  ElevatorB: {fileID: 1796231174}
 --- !u!1 &899381976
 GameObject:
   m_ObjectHideFlags: 0
@@ -6449,7 +6451,7 @@ GameObject:
   - component: {fileID: 1796231176}
   - component: {fileID: 1796231175}
   m_Layer: 0
-  m_Name: Elevator (1)
+  m_Name: ElevatorB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6516,7 +6518,7 @@ Transform:
   m_GameObject: {fileID: 1796231174}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0032389187, w: 0.99999475}
-  m_LocalPosition: {x: 3.28, y: 0.7, z: 0.106054336}
+  m_LocalPosition: {x: 2.702, y: 0.744, z: 0.106054336}
   m_LocalScale: {x: 2.4555132, y: 1.3687501, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6763,7 +6765,7 @@ GameObject:
   - component: {fileID: 2100619482}
   - component: {fileID: 2100619481}
   m_Layer: 0
-  m_Name: Elevator
+  m_Name: ElevatorA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6830,7 +6832,7 @@ Transform:
   m_GameObject: {fileID: 2100619480}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0032389187, w: 0.99999475}
-  m_LocalPosition: {x: -3.34, y: 0.7, z: 0.106054336}
+  m_LocalPosition: {x: -2.771, y: 0.709, z: 0.106054336}
   m_LocalScale: {x: 2.4309046, y: 1.3687501, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
