@@ -79,8 +79,7 @@ public class QBert : MonoBehaviour
             {
                 LocationID /= 2;
                 Debug.Log(LocationID);
-            }
-            
+            }  
         }
        
         if (bCheckLocation)
