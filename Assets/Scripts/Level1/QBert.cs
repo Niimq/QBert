@@ -46,6 +46,11 @@ public class QBert : MonoBehaviour
             
     }
 
+    Vector3 MoveToPoint(Vector3 point) // Making it move like so it won't teleport to the target
+    {
+        return Vector3.Lerp(transform.position, point, 0.05f);
+    }
+
     void CheckLocation(int id)
     {
 
@@ -54,7 +59,7 @@ public class QBert : MonoBehaviour
             if (id == Blocks[i].gameObject.GetComponent<Block>().blockID)
             {
                 Blocktransform = Blocks[i].gameObject.GetComponent<Transform>().transform;
-                transform.position = new Vector3(Blocktransform.position.x, Blocktransform.position.y + yOffset, Blocktransform.position.z);
+                transform.position = MoveToPoint( new Vector3(Blocktransform.position.x, Blocktransform.position.y + yOffset, Blocktransform.position.z));
                 LevelID = Blocks[i].GetComponent<Block>().Level;  
             }
         }
@@ -98,7 +103,7 @@ public class QBert : MonoBehaviour
             }  
         }
        
-        if (bCheckLocation)
+        if (bCheckLocation) // when on elevator don't check the location.
         { CheckLocation(LocationID); }
     }
 
