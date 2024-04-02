@@ -115,7 +115,7 @@ public class QBert : MonoBehaviour
 
     void GetInputs()
     {
-
+        animator.SetBool("OnElevatorA", onElevatorA);
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (LocationID == 16 && ElevatorA != null)
