@@ -33,7 +33,6 @@ public class PauseMenu : MonoBehaviour
             Debug.Log("p Pressed");
             Pause();
         }
-
     }
 
     public void Pause()

@@ -9,6 +9,8 @@ public class Elevator : MonoBehaviour
     GameObject Qbert;
     public Transform ACheckPoint;
 
+    Animator animator;
+
     bool ActivateElevator, QbertCanJump;
 
     // Start is called before the first frame update
@@ -16,11 +18,15 @@ public class Elevator : MonoBehaviour
     {
         Qbert = GameObject.FindGameObjectWithTag("QBert");
         ActivateElevator = false;
+        animator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("Activate", ActivateElevator); // It will activate the animation for elevator
+
         if (ActivateElevator)
         {
             MoveElevator();

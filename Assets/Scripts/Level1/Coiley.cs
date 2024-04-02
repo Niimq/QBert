@@ -17,6 +17,7 @@ public class Coiley : MonoBehaviour
     int SpawnBlockID, CoileyID, CoileyLevel;
 
     bool CoileyHatched, itCanMove;
+    bool activateCoileyEyes; // :D Coiley Eyes 0~0
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class Coiley : MonoBehaviour
         }
         CoileyHatched = false;
         itCanMove = true;
+        activateCoileyEyes = true;
         SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -35,7 +37,7 @@ public class Coiley : MonoBehaviour
     {
         if (Qbert != null && itCanMove)
         {
-            bool activeCoiley = Qbert.GetComponent<QBert>().ActivateCoiley;
+            bool activeCoiley = Qbert.GetComponent<QBert>().ActivateCoiley; // Coiley gets spawned
             if (activeCoiley && CoileyHatched != true)
             {
                 Debug.Log("Coiley!!");
@@ -86,55 +88,58 @@ public class Coiley : MonoBehaviour
 
     IEnumerator CoileyLookWhereYouGoing()
     {
-        int TargetID = Qbert.GetComponent<QBert>().LocationID;
-        int NextBlockIDA, NextBlockIDB;
 
-        if (CoileyLevel >= Qbert.GetComponent<QBert>().LevelID)
+        if (activateCoileyEyes)
         {
-            NextBlockIDA = CoileyID / 3;
-            NextBlockIDB = CoileyID / 2;
-            if (TargetID % NextBlockIDA == 0 && TargetID % NextBlockIDB == 0)
+
+            int TargetID = Qbert.GetComponent<QBert>().LocationID;
+            int NextBlockIDA, NextBlockIDB;
+
+            if (CoileyLevel >= Qbert.GetComponent<QBert>().LevelID)
             {
-                if (Random.value < 0.5f)
-                    CoileyID /= 2;
-                else
+                NextBlockIDA = CoileyID / 3;
+                NextBlockIDB = CoileyID / 2;
+                if (TargetID % NextBlockIDA == 0 && TargetID % NextBlockIDB == 0)
+                {
+                    if (Random.value < 0.5f)
+                        CoileyID /= 2;
+                    else
+                        CoileyID /= 3;
+                }
+                else if (TargetID % NextBlockIDA == 0)
+                {
                     CoileyID /= 3;
-            }
-            else if (TargetID % NextBlockIDA == 0)
-            {
-                CoileyID /= 3;
-            }
-            else
-            {
-                CoileyID /= 2;
-            }
-            
-        }
-        else
-        {
-            NextBlockIDA = CoileyID * 3;
-            NextBlockIDB = CoileyID * 2;
-            if (TargetID % NextBlockIDA == 0 && TargetID % NextBlockIDB == 0)
-            {
-                if (Random.value < 0.5f)
-                    CoileyID *= 2;
+                }
                 else
-                    CoileyID *= 3;
-            }
-            else if (TargetID % NextBlockIDA == 0)
-            {
-                CoileyID *= 3;
+                {
+                    CoileyID /= 2;
+                }
             }
             else
             {
-                CoileyID *= 2;
+                NextBlockIDA = CoileyID * 3;
+                NextBlockIDB = CoileyID * 2;
+                if (TargetID % NextBlockIDA == 0 && TargetID % NextBlockIDB == 0)
+                {
+                    if (Random.value < 0.5f)
+                        CoileyID *= 2;
+                    else
+                        CoileyID *= 3;
+                }
+                else if (TargetID % NextBlockIDA == 0)
+                {
+                    CoileyID *= 3;
+                }
+                else
+                {
+                    CoileyID *= 2;
+                }
             }
+            activateCoileyEyes = false;
         }
-
-       
 
         if (Qbert != null && Qbert.GetComponent<QBert>() != null && Qbert.GetComponent<QBert>().Blocks != null)
-        {
+        {        
             for (int i = 0; i < Qbert.GetComponent<QBert>().Blocks.Count; i++)
             {
                 if (CoileyID == Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().blockID)
@@ -142,16 +147,27 @@ public class Coiley : MonoBehaviour
                     MoveID = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().transform;
                     CoileyLevel = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().Level;
 
-                    transform.position = new Vector3(MoveID.position.x, MoveID.position.y + 0.35f);
+                    transform.position = MoveToPoint(new Vector3(MoveID.position.x, MoveID.position.y + 0.35f, MoveID.position.z));
+
+                    if (transform.position == new Vector3(MoveID.position.x, MoveID.position.y + 0.35f))
+                    {
+                        activateCoileyEyes = true;
+                    }
                 }
             }
         }
         
         Debug.Log(CoileyID);
         itCanMove = false;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.75f);
         itCanMove = true;
     }
+
+    Vector3 MoveToPoint(Vector3 point) // Making it move like so it won't teleport to the target
+    {
+        return Vector3.MoveTowards(transform.position, point, 0.5f);
+    }
+
 
     //public void Respawn()
     //{
@@ -173,7 +189,7 @@ public class Coiley : MonoBehaviour
     //            NewCoiley = Instantiate(gameObject, _spawnPoint.position, Quaternion.identity);
 
     //            CoileyID = block.GetComponent<Block>().blockID;
-                
+
     //        }
     //    }
     //}
