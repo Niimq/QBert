@@ -24,8 +24,6 @@ public class QBert : MonoBehaviour
     int whereToJump = 0;
 
     Animator animator;
-    AnimatorControllerParameter Parameter;
-    AnimatorController Controller;
 
     // Start is called before the first frame update
     void Start()
@@ -116,6 +114,8 @@ public class QBert : MonoBehaviour
     void GetInputs()
     {
         animator.SetBool("OnElevatorA", onElevatorA);
+        animator.SetBool("OnElevatorB", onElevatorB);
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (LocationID == 16 && ElevatorA != null)
@@ -190,7 +190,7 @@ public class QBert : MonoBehaviour
             Blocks[0].transform.position.y + yOffset, Blocks[0].transform.position.z); // move the Qbert to top most block. 0 in the list
         LocationID = 1;
         onElevatorA = false;
-        onElevatorB =false;
+        onElevatorB = false;
         bCheckLocation = true;
 
     }

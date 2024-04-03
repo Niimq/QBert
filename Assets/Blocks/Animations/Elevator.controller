@@ -68,14 +68,14 @@ AnimatorStateMachine:
     m_Position: {x: 380, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7427777097924518038}
-    m_Position: {x: 480, y: 110, z: 0}
+    m_Position: {x: 350, y: 110, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 3028137598752291663}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 140, y: 130, z: 0}
+  m_AnyStatePosition: {x: 120, y: 110, z: 0}
   m_EntryPosition: {x: 140, y: 250, z: 0}
   m_ExitPosition: {x: 700, y: 80, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
@@ -97,10 +97,10 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 0
+  m_ExitTime: 0
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -112,7 +112,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ElevatorSpinning
+  m_Name: ElevatorSpinningA
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

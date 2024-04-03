@@ -7,6 +7,7 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     GameObject Qbert;
+
     public Transform ACheckPoint;
 
     Animator animator;
@@ -19,7 +20,6 @@ public class Elevator : MonoBehaviour
         Qbert = GameObject.FindGameObjectWithTag("QBert");
         ActivateElevator = false;
         animator = GetComponent<Animator>();
-        
     }
 
     // Update is called once per frame
