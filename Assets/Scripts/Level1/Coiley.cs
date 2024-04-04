@@ -18,7 +18,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Coiley : MonoBehaviour
 {
-    public Sprite HatchedCoiley, CoileyLeftUpAir, CoileyRightUpAir, CoileyLeftDownAir, CoileyRightDownAir;
+    public Sprite HatchedCoiley, CoileyLeftUpAir, CoileyRightUpAir, CoileyLeftDownAir, CoileyRightDownAir,
+                        CoileyLeftUpIdle, CoileyRightUpIdle, CoileyLeftDownIdle, CoileyRightDownIdle;
     SpriteRenderer SpriteRenderer;
     static GameObject Qbert;
 
@@ -31,6 +32,7 @@ public class Coiley : MonoBehaviour
     int SpawnBlockID, CoileyID, CoileyLevel;
 
     bool CoileyHatched, itCanMove;
+    int CoileyPreviousID;
     bool activateCoileyEyes; // :D Coiley Eyes 0~0
 
     // Start is called before the first frame update
@@ -51,7 +53,7 @@ public class Coiley : MonoBehaviour
     {
         if (Qbert != null && itCanMove)
         {
-            int CoileyPreviousID = 0 + CoileyID;
+            CoileyPreviousID = 0 + CoileyID;
                 
             bool activeCoiley = Qbert.GetComponent<QBert>().ActivateCoiley; // Coiley gets spawned
             if (activeCoiley && CoileyHatched != true)
@@ -64,30 +66,7 @@ public class Coiley : MonoBehaviour
             {
                // SpriteRenderer.sprite = HatchedCoiley;
                 StartCoroutine(CoileyLookWhereYouGoing());
-                
-                // Basically we want to know which direction is coiley's heading to based off of his previous ID.
-            if (CoileyPreviousID * 2 == CoileyID)
-            {
-                MyAnimator(3); // left down
             }
-            if (CoileyPreviousID * 3 == CoileyID)
-            {
-                MyAnimator(4); // 
-            }
-            if (CoileyPreviousID / 2 == CoileyID)
-            {
-                MyAnimator(2); //
-            }
-            if (CoileyPreviousID / 3 == CoileyID)
-            {
-               MyAnimator(1); //
-            }
-
-             
-            }
-
-            
-
         }
     }
 
@@ -132,6 +111,24 @@ public class Coiley : MonoBehaviour
 
             CoileyDecides();
 
+            // Basically we want to know which direction is coiley's heading to based off of his previous ID.
+            if (CoileyPreviousID * 2 == CoileyID)
+            {
+                MyAnimator(3); // left down
+            }
+            if (CoileyPreviousID * 3 == CoileyID)
+            {
+                MyAnimator(4); // Right Down
+            }
+            if (CoileyPreviousID / 2 == CoileyID)
+            {
+                MyAnimator(2); // Left Up
+            }
+            if (CoileyPreviousID / 3 == CoileyID)
+            {
+                MyAnimator(1); // Right Up
+            }
+
             activateCoileyEyes = false;
         }
 
@@ -149,7 +146,25 @@ public class Coiley : MonoBehaviour
                     if (transform.position == new Vector3(MoveID.position.x, MoveID.position.y + 0.45f, MoveID.position.z))
                     {
                         
-                        Debug.Log("REACHED");
+                        
+
+                        if (SpriteRenderer.sprite == CoileyLeftDownAir)
+                        {
+                            MyAnimator(5); // left down Idle
+                        }
+                        if (SpriteRenderer.sprite == CoileyRightDownAir)
+                        {
+                            MyAnimator(6); // Rigt down Idle
+                        }
+                        if (SpriteRenderer.sprite == CoileyLeftUpAir)
+                        {
+                            MyAnimator(7); // Left up Idle
+                        }
+                        if (SpriteRenderer.sprite == CoileyRightUpAir)
+                        {
+                            MyAnimator(8); // Right up Idle
+                        }
+                        
                         activateCoileyEyes = true;
                     }
                 }
@@ -166,38 +181,67 @@ public class Coiley : MonoBehaviour
 
     void MyAnimator(int index)
     {
-       
-            switch (index)
-            {
 
-                case 1:
-                    {
+        
+        switch (index)
+        {
+            case 1:
+                {
 
-                        SpriteRenderer.sprite = CoileyLeftUpAir;
-                    }
-                    break;
+                    SpriteRenderer.sprite = CoileyLeftUpAir;
+                }
+                break;
 
-                case 2:
-                    {
+            case 2:
+                {
 
-                        SpriteRenderer.sprite = CoileyRightUpAir;
-                    }
-                    break;
+                    SpriteRenderer.sprite = CoileyRightUpAir;
+                }
+                break;
 
-                case 3:
-                    {
+            case 3:
+                {
 
-                        SpriteRenderer.sprite = CoileyLeftDownAir;
-                    }
-                    break;
+                    SpriteRenderer.sprite = CoileyLeftDownAir;
+                }
+                break;
 
-                case 4:
-                    {
+            case 4:
+                {
 
-                        SpriteRenderer.sprite = CoileyRightDownAir;
-                    }
-                    break;
-            }
+                    SpriteRenderer.sprite = CoileyRightDownAir;
+                }
+                break;
+            case 5:
+                {
+
+                    SpriteRenderer.sprite = CoileyLeftUpIdle;
+                }
+                break;
+
+            case 6:
+                {
+
+                    SpriteRenderer.sprite = CoileyRightUpIdle;
+                }
+                break;
+
+            case 7:
+                {
+
+                    SpriteRenderer.sprite = CoileyLeftDownIdle;
+                }
+                break;
+
+            case 8:
+                {
+
+                    SpriteRenderer.sprite = CoileyRightDownIdle;
+                }
+                break;
+            
+        }
+     
     }
 
     void CoileyDecides()
