@@ -44,6 +44,10 @@ public class QBert : MonoBehaviour
         {
             GetInputs();
         }
+        else
+        {
+            StartCoroutine(ResetSimulation());
+        }
 
         if (onElevatorA)
             OnElevatorA();
@@ -67,6 +71,12 @@ public class QBert : MonoBehaviour
     Vector3 MoveToPoint(Vector3 point) // Making it move like so it won't teleport to the target
     {
         return Vector3.MoveTowards(transform.position, point, 0.03f);
+    }
+
+    IEnumerator ResetSimulation()
+    {
+        yield return new WaitForSeconds(3);
+        SetGameIsRunning(true);
     }
 
     void CheckLocation(int id)
@@ -211,6 +221,11 @@ public class QBert : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             SetGameIsRunning(false);          
+        }
+
+        if (collision.gameObject.tag == "GreenBall")
+        {
+           // Someother behavior.. Need to check the requirements for it. I guess need to destroy the greenball for sure.
         }
     }
 }

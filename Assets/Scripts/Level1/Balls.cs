@@ -182,7 +182,6 @@ public class Balls : MonoBehaviour
 
             //Debug.Log(_LandPoint.position);
         }
-
         Debug.Log("Ins" + chosenNumber);
         b_itCanMove = false;
 

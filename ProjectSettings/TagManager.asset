@@ -6,6 +6,7 @@ TagManager:
   tags:
   - QBert
   - Enemy
+  - GreenBall
   layers:
   - Default
   - TransparentFX

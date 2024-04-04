@@ -6567,7 +6567,7 @@ GameObject:
   - component: {fileID: 1730850146}
   m_Layer: 0
   m_Name: GreenSmile
-  m_TagString: Enemy
+  m_TagString: GreenBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
