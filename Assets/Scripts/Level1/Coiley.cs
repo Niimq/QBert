@@ -80,7 +80,7 @@ public class Coiley : MonoBehaviour
 
         Debug.Log(CoileyID);
         itCanMove = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0.10f);
         itCanMove = true;
         if (CoileyLevel == 7)
             CoileyHatched = true;
@@ -134,9 +134,17 @@ public class Coiley : MonoBehaviour
         {
             NextBlockIDA = CoileyID / 3;
             NextBlockIDB = CoileyID / 2;
-            if (TargetID % NextBlockIDA == 0 && TargetID % NextBlockIDB == 0) // checking if coiley can jump down freely - but still he doesn't know which one to pick
+            if (NextBlockIDA == TargetID)
             {
-                if (QbertIsOnTheRight) // this is not working properly since it's only getting set when coiley reaches the same level with Qbert
+                CoileyID /= 3;
+            }
+            else if (NextBlockIDB == TargetID)
+            {
+                CoileyID /= 2;
+            }
+            else if (TargetID % NextBlockIDA == 0 && TargetID % NextBlockIDB == 0) // checking if coiley can jump down freely - but still he doesn't know which one to pick
+            {
+                if (GetQbertOnTheLeft(NextBlockIDA, NextBlockIDB, TargetID, true))
                     CoileyID /= 2;
                 else
                     CoileyID /= 3;
@@ -145,9 +153,19 @@ public class Coiley : MonoBehaviour
             {
                 CoileyID /= 3;
             }
-            else
+            else if (TargetID % NextBlockIDB == 0)
             {
                 CoileyID /= 2;
+            }
+            else
+            {
+                // in this case TargetID is smaller than nextBlockIDs
+                if (GetQbertOnTheLeft(NextBlockIDA, NextBlockIDB, TargetID, true))
+                {
+                    CoileyID /= 2;
+                }
+                else { CoileyID /= 3; }
+
             }
         }
 
@@ -156,7 +174,7 @@ public class Coiley : MonoBehaviour
             if (CoileyID < Qbert.GetComponent<QBert>().LocationID) // Coiley is on the left.
             {
                 QbertIsOnTheRight = true;
-                CoileyID /= 2 ;
+                CoileyID /= 2;
             }
             else
             {
@@ -169,9 +187,26 @@ public class Coiley : MonoBehaviour
         {
             NextBlockIDA = CoileyID * 3;
             NextBlockIDB = CoileyID * 2;
-            if (TargetID % NextBlockIDA == 0 && TargetID % NextBlockIDB == 0)
+            if (NextBlockIDA == TargetID)
             {
-              
+                CoileyID *= 3;
+            }
+            else if (NextBlockIDB == TargetID)
+            {
+                CoileyID *= 2;
+            }
+            else if (CoileyLevel + 1 == Qbert.GetComponent<QBert>().LevelID) // gotta check if Coiley is only 1 level above or more. because if yes we wanna do a different behavior.
+            {
+                // in this case TargetID is smaller than nextBlockIDs
+                if (GetQbertOnTheLeft(NextBlockIDA, NextBlockIDB, TargetID, false))
+                {
+                    CoileyID *= 2;
+                }
+                else { CoileyID *= 3; }
+            }
+            else if (TargetID % NextBlockIDA == 0 && TargetID % NextBlockIDB == 0)
+            {
+
                 if (Random.value < 0.5f)
                     CoileyID *= 2;
                 else
@@ -188,7 +223,7 @@ public class Coiley : MonoBehaviour
             else
             {
                 // in this case TargetID is smaller than nextBlockIDs
-                if (GetQbertOnTheLeft(NextBlockIDA, NextBlockIDB, TargetID))
+                if (GetQbertOnTheLeft(NextBlockIDA, NextBlockIDB, TargetID, false))
                 {
                     CoileyID *= 2;
                 }
@@ -198,18 +233,52 @@ public class Coiley : MonoBehaviour
         }
     }
 
-    bool GetQbertOnTheLeft(float IDA, float IDB, int TargetID)
+    bool GetQbertOnTheLeft(float IDA, float IDB, int TargetID, bool GoingUp)
     {
-
-        if (IDA - TargetID < IDB - TargetID)
+        if (GoingUp)
         {
-            return true;
+            if (IDB > TargetID && IDA < TargetID)
+            {
+                if ((IDA - TargetID)  * -1> IDB - TargetID)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (IDA - TargetID > IDB - TargetID) 
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
-            return false;
+            if (IDB < TargetID && IDA > TargetID)
+            {
+                if (IDA - TargetID < (IDB - TargetID) * -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (IDA - TargetID < IDB - TargetID)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-
     }
 
     Vector3 MoveToPoint(Vector3 point) // Making it move like so it won't teleport to the target
