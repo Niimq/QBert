@@ -54,8 +54,7 @@ public class QBert : MonoBehaviour
 
     Vector3 MoveToPoint(Vector3 point) // Making it move like so it won't teleport to the target
     {
-        return Vector3.MoveTowards(transform.position, point, 0.03f);
-       
+        return Vector3.MoveTowards(transform.position, point, 0.03f);    
     }
     
     void CheckLocation(int id)

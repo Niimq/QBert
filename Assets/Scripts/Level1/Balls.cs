@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class Balls : MonoBehaviour
 {
+    public Sprite redBallAir, redBallIdle, greenBallAir, greenBallIdle;
+
     [SerializeField]
     private Transform _spawnPoint;
 
     public GameObject Qbert;
     GameObject newBall;
 
+    SpriteRenderer spriteRenderer;
+
     [SerializeField] private int value = 1;
 
-    public float MovementSpeedByTime = 3;
+    public float MovementSpeedByTime = 0.3f;
 
     int chosenNumber, SpawnBlockID, Level;
 
     Transform MoveID;
-
+    public bool isGreenBall;
     private bool b_itCanMove;
-
+    bool activateBallDecision;
     bool OriginalMovementDone, b_InsitCanMove;
 
     public int Value
@@ -34,6 +38,9 @@ public class Balls : MonoBehaviour
     {
         b_itCanMove = true;
         OriginalMovementDone = true;
+        chosenNumber = 1;
+        activateBallDecision = true;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -50,17 +57,56 @@ public class Balls : MonoBehaviour
         }
     }
 
+    void MyOwnAnimator(int index)
+    {
+        if (isGreenBall)
+        {
+            switch (index)
+            {
+                case 0:
+                    {
+                        spriteRenderer.sprite = greenBallAir;
+                    }
+                    break;
+                case 1:
+                    {
+                        spriteRenderer.sprite = greenBallIdle;
+                    }
+                    break;
+            }
+        }
+        else
+        {
+            switch (index)
+            {
+                case 0:
+                    {
+                        spriteRenderer.sprite = redBallAir;
+                    }
+                    break;
+                case 1:
+                    {
+                        spriteRenderer.sprite = redBallIdle;
+                    }
+                    break;
+
+            }
+        }
+    }
+
     IEnumerator MoveBallsDown()
     {
+        if (activateBallDecision)
+        {        
+            if (Random.value < 0.5f)
 
-        if (chosenNumber == 0)
-            chosenNumber = 1;
+                chosenNumber *= 2;
+            else
+                chosenNumber *= 3;
 
-        if (Random.value < 0.5f)
-
-            chosenNumber *= 2;
-        else
-            chosenNumber *= 3;
+            activateBallDecision = false;
+            MyOwnAnimator(0);
+        }
 
         if (Qbert != null && Qbert.GetComponent<QBert>() != null && Qbert.GetComponent<QBert>().Blocks != null)
         {
@@ -71,7 +117,13 @@ public class Balls : MonoBehaviour
                     MoveID = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().transform;
                     Level = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().Level;
 
-                    transform.position = new Vector3(MoveID.position.x, MoveID.position.y + 0.35f);
+                    transform.position = MoveToPoint(new Vector3(MoveID.position.x, MoveID.position.y + 0.35f, MoveID.position.z));
+
+                    if (transform.position == new Vector3(MoveID.position.x, MoveID.position.y + 0.35f, MoveID.position.z))
+                    {
+                        MyOwnAnimator(1);
+                        activateBallDecision = true;
+                    }
                 }
             }
         }
@@ -79,30 +131,31 @@ public class Balls : MonoBehaviour
         Debug.Log(chosenNumber);
         b_itCanMove = false;
 
-        yield return new WaitForSeconds(MovementSpeedByTime);
-        if (Level == 7 || chosenNumber > 729)
+        yield return new WaitForSeconds(0.3f);
+        if (Level == 7 || chosenNumber > 729 && activateBallDecision)
         {
-            Respawn(); // First Respawn
+            Respawn(); // Respawn a new ball
             Destroy(gameObject); // Destroy the current ball
-            OriginalMovementDone = false;
+            OriginalMovementDone = false;           
         }
-        else
-        {
-            b_itCanMove = true; // Continue moving the ball
-        }
+            b_itCanMove = true; // Continue moving the ball   
     }
 
     IEnumerator MoveInstantiateDown()
     {
-        if (chosenNumber == 0)
-            chosenNumber = 1;
+        bool LandedOn7thFloor = false;
+        if (activateBallDecision)
+        {
 
-        if (Random.value < 0.5f)
+            if (Random.value < 0.5f)
 
-            chosenNumber *= 2;
-        else
-            chosenNumber *= 3;
+                chosenNumber *= 2;
+            else
+                chosenNumber *= 3;
 
+            activateBallDecision = false;
+            MyOwnAnimator(0);
+        }
         if (Qbert != null && Qbert.GetComponent<QBert>() != null && Qbert.GetComponent<QBert>().Blocks != null)
         {
             for (int i = 0; i < Qbert.GetComponent<QBert>().Blocks.Count; i++)
@@ -112,7 +165,17 @@ public class Balls : MonoBehaviour
                     MoveID = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().transform;
                     Level = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().Level;
 
-                    newBall.transform.position = new Vector3(MoveID.position.x, MoveID.position.y + 0.35f);
+                    newBall.transform.position = MoveToPoint(new Vector3(MoveID.position.x, MoveID.position.y + 0.35f, MoveID.position.z));
+
+                    if (transform.position == new Vector3(MoveID.position.x, MoveID.position.y + 0.35f, MoveID.position.z))
+                    {
+                        MyOwnAnimator(1);
+                        activateBallDecision = true;
+                        if (Level == 7) // TODO: not working and it doesn't reach the last floor, they teleport back before reaching to the 7th floor.
+                        {
+                            LandedOn7thFloor = true;
+                        }
+                    }
                 }
             }
             //transform.position = _spawnPoint.position;
@@ -123,16 +186,17 @@ public class Balls : MonoBehaviour
         Debug.Log("Ins" + chosenNumber);
         b_itCanMove = false;
 
-        yield return new WaitForSeconds(3);
-        if (Level == 7 || chosenNumber > 729)
-        {
+        yield return new WaitForSeconds(0.5f);
+        if (Level == 7 || chosenNumber > 729 && LandedOn7thFloor)
+        {   
+            
             Destroy(newBall); // Destroy the current ball
             Respawn(); // Respawn a new ball
+            
         }
-        else
-        {
+        
             b_itCanMove = true; // Continue moving the ball
-        }
+        
     }
 
     public void Respawn()
@@ -162,6 +226,11 @@ public class Balls : MonoBehaviour
             }
         }
         b_InsitCanMove = true;
+    }
+
+    Vector3 MoveToPoint(Vector3 point) // Making it move like so it won't teleport to the target
+    {
+        return Vector3.MoveTowards(transform.position, point, MovementSpeedByTime);
     }
 }
 
