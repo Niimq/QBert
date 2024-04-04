@@ -130,6 +130,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: ArrowRight
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 258
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed56b3fb5bff68c468bd37e4726c09b4
+      internalID: -1526681414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArrowLeft
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 258
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06bbd3102205c4742b9c0116ec39fc7e
+      internalID: 1348575366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -141,6 +183,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      ArrowLeft: 1348575366
+      ArrowRight: -1526681414
       QbertLogo: -913300988
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

@@ -6,8 +6,8 @@ public class Balls : MonoBehaviour
 {
     public Sprite redBallAir, redBallIdle, greenBallAir, greenBallIdle;
 
-    [SerializeField]
-    private Transform _spawnPoint;
+    [SerializeField] 
+    public Transform SpawnPoint;
 
     public GameObject Qbert;
     GameObject newBall;
@@ -178,9 +178,9 @@ public class Balls : MonoBehaviour
                     }
                 }
             }
-            //transform.position = _spawnPoint.position;
+            //transform.position = _LandPoint.position;
 
-            //Debug.Log(_spawnPoint.position);
+            //Debug.Log(_LandPoint.position);
         }
 
         Debug.Log("Ins" + chosenNumber);
@@ -201,6 +201,8 @@ public class Balls : MonoBehaviour
 
     public void Respawn()
     {
+       // transform.position = SpawnPoint.transform.position;
+
         if (Random.value < 0.5f)
 
             SpawnBlockID = 1;
@@ -214,15 +216,13 @@ public class Balls : MonoBehaviour
 
             if (block != null && block.GetComponent<Block>() != null)
             {
-                _spawnPoint = block.GetComponent<Block>().transform;
-
-                newBall = Instantiate(gameObject, _spawnPoint.position, Quaternion.identity);
+                newBall = Instantiate(gameObject, SpawnPoint.transform.position, Quaternion.identity);
                 b_itCanMove = true;
 
                 chosenNumber = block.GetComponent<Block>().blockID;
-                //transform.position = _spawnPoint.position;
+                //transform.position = _LandPoint.position;
                
-                //Debug.Log(_spawnPoint.position);
+                //Debug.Log(_LandPoint.position);
             }
         }
         b_InsitCanMove = true;
