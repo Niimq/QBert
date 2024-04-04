@@ -2807,7 +2807,7 @@ GameObject:
   - component: {fileID: 601067216}
   - component: {fileID: 601067215}
   m_Layer: 0
-  m_Name: Arcade - QBert - General Sprites - Copy (5)_5
+  m_Name: Coiley
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2826,6 +2826,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HatchedCoiley: {fileID: 1131127610, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
+  CoileyLeftUpAir: {fileID: 1333696690, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
+  CoileyRightUpAir: {fileID: -1460943944, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
+  CoileyLeftDownAir: {fileID: 1131127610, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
+  CoileyRightDownAir: {fileID: 1782076281, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
+  CoileyLeftUpIdle: {fileID: 1917042306, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
+  CoileyRightUpIdle: {fileID: -1132822779, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
+  CoileyLeftDownIdle: {fileID: 979848184, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
+  CoileyRightDownIdle: {fileID: -331540970, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
 --- !u!212 &601067216
 SpriteRenderer:
   m_ObjectHideFlags: 0

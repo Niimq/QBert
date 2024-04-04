@@ -1,11 +1,24 @@
+//**************************QBERT**TABLE**********************\\\    
+//          0000000000000000000000000000000000000000000000
+//          0                     1                      0  Left Up: /3 
+//          0                 2       3                  0
+//          0              4     6      9                0  Left Down: *2     
+//          0           8    12     18     27            0
+//          0        16   24     36     54     81        0  Right Up: /3 
+//          0     32   48     72    108    162   243     0 
+//          0   64   96   144    216    324   486  729   0  Right Down: *3
+//          0000000000000000000000000000000000000000000000
+//**************************QBERT**TABLE**********************\\\
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 using static UnityEngine.GraphicsBuffer;
 
 public class Coiley : MonoBehaviour
 {
-    public Sprite HatchedCoiley;
+    public Sprite HatchedCoiley, CoileyLeftUpAir, CoileyRightUpAir, CoileyLeftDownAir, CoileyRightDownAir;
     SpriteRenderer SpriteRenderer;
     static GameObject Qbert;
 
@@ -38,6 +51,8 @@ public class Coiley : MonoBehaviour
     {
         if (Qbert != null && itCanMove)
         {
+            int CoileyPreviousID = 0 + CoileyID;
+                
             bool activeCoiley = Qbert.GetComponent<QBert>().ActivateCoiley; // Coiley gets spawned
             if (activeCoiley && CoileyHatched != true)
             {
@@ -47,9 +62,32 @@ public class Coiley : MonoBehaviour
 
             if (CoileyHatched == true)
             {
-                SpriteRenderer.sprite = HatchedCoiley;
+               // SpriteRenderer.sprite = HatchedCoiley;
                 StartCoroutine(CoileyLookWhereYouGoing());
+                
+                // Basically we want to know which direction is coiley's heading to based off of his previous ID.
+            if (CoileyPreviousID * 2 == CoileyID)
+            {
+                MyAnimator(3); // left down
             }
+            if (CoileyPreviousID * 3 == CoileyID)
+            {
+                MyAnimator(4); // 
+            }
+            if (CoileyPreviousID / 2 == CoileyID)
+            {
+                MyAnimator(2); //
+            }
+            if (CoileyPreviousID / 3 == CoileyID)
+            {
+               MyAnimator(1); //
+            }
+
+             
+            }
+
+            
+
         }
     }
 
@@ -73,7 +111,7 @@ public class Coiley : MonoBehaviour
                 {
                     MoveID = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().transform;
                     CoileyLevel = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().Level;
-                    transform.position = new Vector3(MoveID.position.x, MoveID.position.y + 0.35f);                   
+                    transform.position = new Vector3(MoveID.position.x, MoveID.position.y + 0.35f);
                 }
             }
         }
@@ -107,9 +145,10 @@ public class Coiley : MonoBehaviour
                     CoileyLevel = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().Level;
 
                     transform.position = MoveToPoint(new Vector3(MoveID.position.x, MoveID.position.y + 0.45f, MoveID.position.z));
-
+                   
                     if (transform.position == new Vector3(MoveID.position.x, MoveID.position.y + 0.45f, MoveID.position.z))
                     {
+                        
                         Debug.Log("REACHED");
                         activateCoileyEyes = true;
                     }
@@ -122,13 +161,49 @@ public class Coiley : MonoBehaviour
         itCanMove = false;
         yield return new WaitForSeconds(0.25f);
         itCanMove = true;
+        
+    }
+
+    void MyAnimator(int index)
+    {
+       
+            switch (index)
+            {
+
+                case 1:
+                    {
+
+                        SpriteRenderer.sprite = CoileyLeftUpAir;
+                    }
+                    break;
+
+                case 2:
+                    {
+
+                        SpriteRenderer.sprite = CoileyRightUpAir;
+                    }
+                    break;
+
+                case 3:
+                    {
+
+                        SpriteRenderer.sprite = CoileyLeftDownAir;
+                    }
+                    break;
+
+                case 4:
+                    {
+
+                        SpriteRenderer.sprite = CoileyRightDownAir;
+                    }
+                    break;
+            }
     }
 
     void CoileyDecides()
     {
         int TargetID = Qbert.GetComponent<QBert>().LocationID;
         float NextBlockIDA, NextBlockIDB;
-        bool QbertIsOnTheRight = false;
 
         if (CoileyLevel > Qbert.GetComponent<QBert>().LevelID) // if coiley is lower than Qbert in the blocks
         {
@@ -173,12 +248,11 @@ public class Coiley : MonoBehaviour
         {
             if (CoileyID < Qbert.GetComponent<QBert>().LocationID) // Coiley is on the left.
             {
-                QbertIsOnTheRight = true;
+               
                 CoileyID /= 2;
             }
             else
             {
-                QbertIsOnTheRight = false;
                 CoileyID /= 3;
             }
         }

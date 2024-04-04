@@ -57,7 +57,7 @@ public class QBert : MonoBehaviour
         return Vector3.MoveTowards(transform.position, point, 0.03f);
        
     }
-
+    
     void CheckLocation(int id)
     {
 
