@@ -2187,9 +2187,10 @@ GameObject:
   - component: {fileID: 483671697}
   - component: {fileID: 483671696}
   - component: {fileID: 483671698}
+  - component: {fileID: 483671699}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2277,12 +2278,46 @@ MonoBehaviour:
   redBallIdle: {fileID: 1649690556, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
   greenBallAir: {fileID: -2142109384, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
   greenBallIdle: {fileID: 435682972, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
-  _landPoint: {fileID: 0}
   SpawnPoint: {fileID: 1622715619}
   Qbert: {fileID: 680180427}
   value: 1
   MovementSpeedByTime: 0.6
   isGreenBall: 0
+--- !u!58 &483671699
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483671695}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.065
 --- !u!1 &498976241
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,9 +2847,10 @@ GameObject:
   - component: {fileID: 601067217}
   - component: {fileID: 601067216}
   - component: {fileID: 601067215}
+  - component: {fileID: 601067218}
   m_Layer: 0
   m_Name: Coiley
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2908,6 +2944,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &601067218
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601067214}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.08
 --- !u!1 &623662205
 GameObject:
   m_ObjectHideFlags: 0
@@ -5640,7 +5711,7 @@ Transform:
   m_GameObject: {fileID: 1566151367}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.327982, y: 2.2363667, z: 1.4153203}
+  m_LocalPosition: {x: -9.04, y: 2.45, z: 1.4153203}
   m_LocalScale: {x: 1.6754117, y: 1.0798229, z: 7.0936527}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6493,9 +6564,10 @@ GameObject:
   - component: {fileID: 1730850144}
   - component: {fileID: 1730850143}
   - component: {fileID: 1730850145}
+  - component: {fileID: 1730850146}
   m_Layer: 0
   m_Name: GreenSmile
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6583,12 +6655,46 @@ MonoBehaviour:
   redBallIdle: {fileID: 1649690556, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
   greenBallAir: {fileID: -2142109384, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
   greenBallIdle: {fileID: 435682972, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
-  _landPoint: {fileID: 0}
   SpawnPoint: {fileID: 1622715619}
   Qbert: {fileID: 680180427}
   value: 1
   MovementSpeedByTime: 0.3
   isGreenBall: 1
+--- !u!58 &1730850146
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730850142}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.05
 --- !u!1 &1796231174
 GameObject:
   m_ObjectHideFlags: 0
@@ -7330,7 +7436,7 @@ Transform:
   m_GameObject: {fileID: 2103576156}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.307104, y: 2.8433604, z: 1.4153203}
+  m_LocalPosition: {x: -9.019122, y: 3.0569935, z: 1.4153203}
   m_LocalScale: {x: 5.2194104, y: 5.1007876, z: 4.7449183}
   m_ConstrainProportionsScale: 0
   m_Children: []

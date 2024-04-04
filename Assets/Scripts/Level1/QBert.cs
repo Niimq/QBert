@@ -21,6 +21,8 @@ public class QBert : MonoBehaviour
 
     public bool ActivateCoiley;
 
+    bool GameIsRunning;
+
     int whereToJump = 0;
 
     Animator animator;
@@ -31,13 +33,17 @@ public class QBert : MonoBehaviour
         LocationID = 1;
         bCheckLocation = true;
         ActivateCoiley = false;
-        animator = GetComponent<Animator>();  
+        animator = GetComponent<Animator>();
+        GameIsRunning = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetInputs();
+        if (GetGameIsRunning())
+        {
+            GetInputs();
+        }
 
         if (onElevatorA)
             OnElevatorA();
@@ -49,14 +55,20 @@ public class QBert : MonoBehaviour
         {
             ActivateCoiley = true;
         }
-            
+
     }
+
+    bool GetGameIsRunning() // Getter
+    { return GameIsRunning; }
+
+    void SetGameIsRunning(bool condition) // Setter
+    { GameIsRunning = condition; }
 
     Vector3 MoveToPoint(Vector3 point) // Making it move like so it won't teleport to the target
     {
-        return Vector3.MoveTowards(transform.position, point, 0.03f);    
+        return Vector3.MoveTowards(transform.position, point, 0.03f);
     }
-    
+
     void CheckLocation(int id)
     {
 
@@ -65,9 +77,9 @@ public class QBert : MonoBehaviour
             if (id == Blocks[i].gameObject.GetComponent<Block>().blockID)
             {
                 Blocktransform = Blocks[i].gameObject.GetComponent<Transform>().transform;
-                transform.position = MoveToPoint( new Vector3(Blocktransform.position.x, Blocktransform.position.y + yOffset, Blocktransform.position.z));
+                transform.position = MoveToPoint(new Vector3(Blocktransform.position.x, Blocktransform.position.y + yOffset, Blocktransform.position.z));
                 LevelID = Blocks[i].GetComponent<Block>().Level;
-                if (transform.position == new Vector3(Blocktransform.position.x, Blocktransform.position.y + yOffset, Blocktransform.position.z)) 
+                if (transform.position == new Vector3(Blocktransform.position.x, Blocktransform.position.y + yOffset, Blocktransform.position.z))
                 {
                     animator.SetInteger("WhereToJump", GetWhereToJumpAfterLand());
                     bCheckLocation = false; // making sure that player doesn't jitter.
@@ -79,23 +91,23 @@ public class QBert : MonoBehaviour
     int GetWhereToJumpAfterLand()
     {
         if (whereToJump == 1)
-        { 
+        {
             // if left up was pressed.
             SetWhereToJump(5); // translation to Idle.
         }
-        
+
         if (whereToJump == 2)
-        { 
+        {
             // Right Down Idle Transation Set
             SetWhereToJump(6);
         }
-        
+
         if (whereToJump == 3)
         {
             // Left Down Idle Transation Set
             SetWhereToJump(7);
         }
-        
+
         if (whereToJump == 4)
         {
             // Right Up Idle Transation Set
@@ -128,9 +140,9 @@ public class QBert : MonoBehaviour
                 LocationID /= 3;
                 Debug.Log(LocationID);
                 bCheckLocation = true;
-            }  
+            }
         }
-        if (Input.GetKeyDown(KeyCode.E)) 
+        if (Input.GetKeyDown(KeyCode.E))
         {
             SetWhereToJump(2);
             animator.SetInteger("WhereToJump", whereToJump); // 2 meaning Right Down
@@ -138,19 +150,19 @@ public class QBert : MonoBehaviour
             Debug.Log(LocationID);
             bCheckLocation = true;
         }
-        if (Input.GetKeyDown(KeyCode.Z)) 
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             SetWhereToJump(3);
             animator.SetInteger("WhereToJump", whereToJump); // 3 meaning Left Down
             LocationID *= 2;
             Debug.Log(LocationID);
-            bCheckLocation = true;            
+            bCheckLocation = true;
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
             if (LocationID == 81 && ElevatorB != null)
             {
-               onElevatorB = true;
+                onElevatorB = true;
             }
             else
             {
@@ -158,11 +170,11 @@ public class QBert : MonoBehaviour
                 animator.SetInteger("WhereToJump", whereToJump); // 4 meaning Right Up
                 LocationID /= 2;
                 Debug.Log(LocationID);
-                bCheckLocation = true;              
-            }  
+                bCheckLocation = true;
+            }
         }
 
-       
+
         if (bCheckLocation) // when on elevator don't check the location.
         { CheckLocation(LocationID); }
     }
@@ -174,7 +186,7 @@ public class QBert : MonoBehaviour
         transform.position = new Vector3(ElevatorA.transform.position.x, ElevatorA.transform.position.y +
             0.3f, transform.position.z);
     }
-    
+
     void OnElevatorB()
     {
         bCheckLocation = false;
@@ -192,5 +204,13 @@ public class QBert : MonoBehaviour
         onElevatorB = false;
         bCheckLocation = true;
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            SetGameIsRunning(false);          
+        }
     }
 }
