@@ -2825,11 +2825,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660e0481d9fdec74eae723e6442032bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HatchedCoiley: {fileID: 1131127610, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
+  EggCoileyAir: {fileID: 1607663277, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
   CoileyLeftUpAir: {fileID: 1333696690, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
   CoileyRightUpAir: {fileID: -1460943944, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
   CoileyLeftDownAir: {fileID: 1131127610, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
   CoileyRightDownAir: {fileID: 1782076281, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
+  EggCoileyIdle: {fileID: -1999919299, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
   CoileyLeftUpIdle: {fileID: 1917042306, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
   CoileyRightUpIdle: {fileID: -1132822779, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
   CoileyLeftDownIdle: {fileID: 979848184, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
@@ -2895,7 +2896,7 @@ Transform:
   m_GameObject: {fileID: 601067214}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.63, y: 6.46, z: 0}
+  m_LocalPosition: {x: 0, y: 6.46, z: 0}
   m_LocalScale: {x: 2.6402311, y: 2.6402311, z: 2.6402311}
   m_ConstrainProportionsScale: 0
   m_Children: []

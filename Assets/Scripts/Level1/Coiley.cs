@@ -18,8 +18,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Coiley : MonoBehaviour
 {
-    public Sprite HatchedCoiley, CoileyLeftUpAir, CoileyRightUpAir, CoileyLeftDownAir, CoileyRightDownAir,
-                        CoileyLeftUpIdle, CoileyRightUpIdle, CoileyLeftDownIdle, CoileyRightDownIdle;
+    public Sprite EggCoileyAir, CoileyLeftUpAir, CoileyRightUpAir, CoileyLeftDownAir, CoileyRightDownAir,
+                       EggCoileyIdle, CoileyLeftUpIdle, CoileyRightUpIdle, CoileyLeftDownIdle, CoileyRightDownIdle;
     SpriteRenderer SpriteRenderer;
     static GameObject Qbert;
 
@@ -72,15 +72,20 @@ public class Coiley : MonoBehaviour
 
     IEnumerator MoveCoileyDown()
     {
+        if (activateCoileyEyes)
+        { 
+            if (CoileyID == 0)
+                CoileyID = 1;
 
-        if (CoileyID == 0)
-            CoileyID = 1;
+            if (Random.value < 0.5f)
 
-        if (Random.value < 0.5f)
-
-            CoileyID *= 2;
-        else
-            CoileyID *= 3;
+                CoileyID *= 2;
+            else
+                CoileyID *= 3;
+            MyAnimator(9);
+            activateCoileyEyes = false;
+        }
+        
 
         if (Qbert != null && Qbert.GetComponent<QBert>() != null && Qbert.GetComponent<QBert>().Blocks != null)
         {
@@ -90,7 +95,14 @@ public class Coiley : MonoBehaviour
                 {
                     MoveID = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().transform;
                     CoileyLevel = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().Level;
-                    transform.position = new Vector3(MoveID.position.x, MoveID.position.y + 0.35f);
+                    transform.position = MoveToPoint(new Vector3(MoveID.position.x, MoveID.position.y + 0.35f, MoveID.position.z));
+
+                    if (transform.position == new Vector3(MoveID.position.x, MoveID.position.y + 0.35f, MoveID.position.z))
+                    {
+
+                        MyAnimator(10);
+                        activateCoileyEyes = true; 
+                    }
                 }
             }
         }
@@ -150,19 +162,19 @@ public class Coiley : MonoBehaviour
 
                         if (SpriteRenderer.sprite == CoileyLeftDownAir)
                         {
-                            MyAnimator(5); // left down Idle
+                            MyAnimator(7); // left down Idle
                         }
                         if (SpriteRenderer.sprite == CoileyRightDownAir)
                         {
-                            MyAnimator(6); // Rigt down Idle
+                            MyAnimator(8); // Rigt down Idle
                         }
                         if (SpriteRenderer.sprite == CoileyLeftUpAir)
                         {
-                            MyAnimator(7); // Left up Idle
+                            MyAnimator(5); // Left up Idle
                         }
                         if (SpriteRenderer.sprite == CoileyRightUpAir)
                         {
-                            MyAnimator(8); // Right up Idle
+                            MyAnimator(6); // Right up Idle
                         }
                         
                         activateCoileyEyes = true;
@@ -237,6 +249,19 @@ public class Coiley : MonoBehaviour
                 {
 
                     SpriteRenderer.sprite = CoileyRightDownIdle;
+                }
+                break;
+            case 9:
+                {
+
+                    SpriteRenderer.sprite = EggCoileyAir;
+                }
+                break;
+
+            case 10:
+                {
+
+                    SpriteRenderer.sprite = EggCoileyIdle;
                 }
                 break;
             
