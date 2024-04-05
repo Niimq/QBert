@@ -104,7 +104,7 @@ public class Coiley : MonoBehaviour
                 {
                     MoveID = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().transform;
                     CoileyLevel = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().Level;
-                    transform.position = MoveToPoint(new Vector3(MoveID.position.x, MoveID.position.y + 0.35f, MoveID.position.z));
+                    transform.position = MoveToPoint(new Vector3(MoveID.position.x, MoveID.position.y + 0.35f, MoveID.position.z), 0.1f);
 
                     if (transform.position == new Vector3(MoveID.position.x, MoveID.position.y + 0.35f, MoveID.position.z))
                     {
@@ -161,7 +161,7 @@ public class Coiley : MonoBehaviour
                     MoveID = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().transform;
                     CoileyLevel = Qbert.GetComponent<QBert>().Blocks[i].GetComponent<Block>().Level;
 
-                    transform.position = MoveToPoint(new Vector3(MoveID.position.x, MoveID.position.y + 0.45f, MoveID.position.z));
+                    transform.position = MoveToPoint(new Vector3(MoveID.position.x, MoveID.position.y + 0.45f, MoveID.position.z), 0.3f);
                    
                     if (transform.position == new Vector3(MoveID.position.x, MoveID.position.y + 0.45f, MoveID.position.z))
                     { 
@@ -427,9 +427,9 @@ public class Coiley : MonoBehaviour
         }
     }
 
-    Vector3 MoveToPoint(Vector3 point) // Making it move like so it won't teleport to the target
+    Vector3 MoveToPoint(Vector3 point, float rate) // Making it move like so it won't teleport to the target
     {
-        return Vector3.MoveTowards(transform.position, point, 0.1f);
+        return Vector3.MoveTowards(transform.position, point, rate);
     }
 
     void resetCoileySimulation()

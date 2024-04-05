@@ -221,8 +221,11 @@ public class QBert : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            SetGameIsRunning(false);
-            ActivateCoiley = false; // de activating coiley
+            if (onElevatorA == false && onElevatorB == false) //  we don't care if Qbert is on Elevator.
+            {
+                SetGameIsRunning(false);
+                ActivateCoiley = false; // de activating coiley
+            }
         }
 
         if (collision.gameObject.tag == "GreenBall")
