@@ -4,7 +4,7 @@
 //          0                 2       3                  0              
 //          0              4     6      9                0  Left Down: *2
 //          0           8    12     18     27            0              
-//          0        16   24     36     54     81        0  Right Up: /3 
+//          0        16   24     36     54     81        0  Right Up: /2 
 //          0     32   48     72    108    162   243     0                 
 //          0   64   96   144    216    324   486  729   0  Right Down: *3
 //          0000000000000000000000000000000000000000000000                 
@@ -164,10 +164,7 @@ public class Coiley : MonoBehaviour
                     transform.position = MoveToPoint(new Vector3(MoveID.position.x, MoveID.position.y + 0.45f, MoveID.position.z));
                    
                     if (transform.position == new Vector3(MoveID.position.x, MoveID.position.y + 0.45f, MoveID.position.z))
-                    {
-                        
-                        
-
+                    { 
                         if (SpriteRenderer.sprite == CoileyLeftDownAir)
                         {
                             MyAnimator(7); // left down Idle

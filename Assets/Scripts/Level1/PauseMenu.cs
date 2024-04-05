@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour
 
     void UpdateInput()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("p Pressed");
             Pause();

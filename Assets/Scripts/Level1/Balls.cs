@@ -45,16 +45,24 @@ public class Balls : MonoBehaviour
 
     private void Update()
     {
-        if (OriginalMovementDone && b_itCanMove)
+        if (Qbert.GetComponent<QBert>().GetGameIsRunning())
         {
-            StartCoroutine(MoveBallsDown());
-        }
+            if (OriginalMovementDone && b_itCanMove)
+            {
+                StartCoroutine(MoveBallsDown());
+            }
       
-        if (b_InsitCanMove == true)
-        {
-            Debug.Log("Reached");
-            StartCoroutine(MoveInstantiateDown());
+            if (b_InsitCanMove == true)
+            {
+                Debug.Log("Reached");
+                StartCoroutine(MoveInstantiateDown());
+            }
         }
+        else
+        {
+            ResetSimulation();
+        }
+        
     }
 
     void MyOwnAnimator(int index)
@@ -230,6 +238,15 @@ public class Balls : MonoBehaviour
     Vector3 MoveToPoint(Vector3 point) // Making it move like so it won't teleport to the target
     {
         return Vector3.MoveTowards(transform.position, point, MovementSpeedByTime);
+    }
+
+    void ResetSimulation()
+    {
+        activateBallDecision = true;
+        chosenNumber = 1;
+        OriginalMovementDone = true;
+        b_InsitCanMove = false;
+        transform.position = SpawnPoint.position;
     }
 }
 
