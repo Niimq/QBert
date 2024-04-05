@@ -1,13 +1,13 @@
 //**************************QBERT**TABLE**********************\\\    
-//          0000000000000000000000000000000000000000000000
+//          0000000000000000000000000000000000000000000000              
 //          0                     1                      0  Left Up: /3 
-//          0                 2       3                  0
+//          0                 2       3                  0              
 //          0              4     6      9                0  Left Down: *2
-//          0           8    12     18     27            0
+//          0           8    12     18     27            0              
 //          0        16   24     36     54     81        0  Right Up: /3 
-//          0     32   48     72    108    162   243     0 
+//          0     32   48     72    108    162   243     0                 
 //          0   64   96   144    216    324   486  729   0  Right Down: *3
-//          0000000000000000000000000000000000000000000000
+//          0000000000000000000000000000000000000000000000                 
 //**************************QBERT**TABLE**********************\\\
 
 using System.Collections;
@@ -20,16 +20,15 @@ public class Coiley : MonoBehaviour
 {
     public Sprite EggCoileyAir, CoileyLeftUpAir, CoileyRightUpAir, CoileyLeftDownAir, CoileyRightDownAir,
                        EggCoileyIdle, CoileyLeftUpIdle, CoileyRightUpIdle, CoileyLeftDownIdle, CoileyRightDownIdle;
+
     SpriteRenderer SpriteRenderer;
     static GameObject Qbert;
 
-    private Transform _spawnPoint;
+    public Transform _spawnPoint;
 
-    GameObject NewCoiley;
+    private Transform MoveID;
 
-    Transform MoveID;
-
-    int SpawnBlockID, CoileyID, CoileyLevel;
+    int CoileyID, CoileyLevel;
 
     bool CoileyHatched, itCanMove;
     int CoileyPreviousID;
@@ -51,21 +50,31 @@ public class Coiley : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Qbert != null && itCanMove)
+        if (Qbert != null)
         {
-            CoileyPreviousID = 0 + CoileyID;
-                
-            bool activeCoiley = Qbert.GetComponent<QBert>().ActivateCoiley; // Coiley gets spawned
-            if (activeCoiley && CoileyHatched != true)
+            if (Qbert.GetComponent<QBert>().GetGameIsRunning()) // Checking if they collided with eachother or not.
             {
-                Debug.Log("Coiley!!");
-                StartCoroutine(MoveCoileyDown());
-            }
+                if (itCanMove)
+                {
+                    CoileyPreviousID = 0 + CoileyID;
 
-            if (CoileyHatched == true)
+                    bool activeCoiley = Qbert.GetComponent<QBert>().ActivateCoiley; // Coiley gets spawned
+                    if (activeCoiley && CoileyHatched != true)
+                    {
+                        Debug.Log("Coiley!!");
+                        StartCoroutine(MoveCoileyDown());
+                    }
+
+                    if (CoileyHatched == true)
+                    {
+                        // SpriteRenderer.sprite = HatchedCoiley;
+                        StartCoroutine(CoileyLookWhereYouGoing());
+                    }
+                }
+            }
+            else // this is where we call the reset simulation.
             {
-               // SpriteRenderer.sprite = HatchedCoiley;
-                StartCoroutine(CoileyLookWhereYouGoing());
+                resetCoileySimulation();
             }
         }
     }
@@ -120,7 +129,6 @@ public class Coiley : MonoBehaviour
 
         if (activateCoileyEyes)
         {
-
             CoileyDecides();
 
             // Basically we want to know which direction is coiley's heading to based off of his previous ID.
@@ -193,8 +201,6 @@ public class Coiley : MonoBehaviour
 
     void MyAnimator(int index)
     {
-
-        
         switch (index)
         {
             case 1:
@@ -429,28 +435,13 @@ public class Coiley : MonoBehaviour
         return Vector3.MoveTowards(transform.position, point, 0.1f);
     }
 
-    //public void Respawn()
-    //{
-    //    if (Random.value < 0.5f)
-
-    //        SpawnBlockID = 1;
-    //    else
-    //        SpawnBlockID = 2;
-
-    //    // Check if Qbert is not null before accessing its member
-    //    if (Qbert != null && Qbert.GetComponent<QBert>() != null && Qbert.GetComponent<QBert>().Blocks != null)
-    //    {
-    //        GameObject block = Qbert.GetComponent<QBert>().Blocks[SpawnBlockID];
-
-    //        if (block != null && block.GetComponent<Block>() != null)
-    //        {
-    //            _spawnPoint = block.GetComponent<Block>().transform;
-
-    //            NewCoiley = Instantiate(gameObject, _spawnPoint.position, Quaternion.identity);
-
-    //            CoileyID = block.GetComponent<Block>().blockID;
-
-    //        }
-    //    }
-    //}
+    void resetCoileySimulation()
+    {
+        // BTW I can write cleaner code too with more comments and more setters and getters. but for now I'm kinda rushing this.
+        CoileyHatched = false;
+        activateCoileyEyes = true;
+        CoileyID = 0;
+        CoileyPreviousID = 0;
+        transform.position = _spawnPoint.position; // setting him back to his original spawn point position.
+    }
 }

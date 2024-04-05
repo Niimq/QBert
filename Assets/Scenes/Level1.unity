@@ -2877,6 +2877,7 @@ MonoBehaviour:
   CoileyRightUpIdle: {fileID: -1132822779, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
   CoileyLeftDownIdle: {fileID: 979848184, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
   CoileyRightDownIdle: {fileID: -331540970, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
+  _spawnPoint: {fileID: 1622715619}
 --- !u!212 &601067216
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6025,7 +6026,7 @@ Transform:
   m_GameObject: {fileID: 1622715618}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 6.14, z: 0.12554161}
+  m_LocalPosition: {x: -0.01, y: 8.99, z: 0.12554161}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

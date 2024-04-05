@@ -62,7 +62,7 @@ public class QBert : MonoBehaviour
 
     }
 
-    bool GetGameIsRunning() // Getter
+    public bool GetGameIsRunning() // Public - Getter
     { return GameIsRunning; }
 
     void SetGameIsRunning(bool condition) // Setter
@@ -75,8 +75,10 @@ public class QBert : MonoBehaviour
 
     IEnumerator ResetSimulation()
     {
-        yield return new WaitForSeconds(3);
-        SetGameIsRunning(true);
+        yield return new WaitForSeconds(3);        
+       
+        SetGameIsRunning(true); 
+        ActivateCoiley = true;       
     }
 
     void CheckLocation(int id)
@@ -213,14 +215,14 @@ public class QBert : MonoBehaviour
         onElevatorA = false;
         onElevatorB = false;
         bCheckLocation = true;
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            SetGameIsRunning(false);          
+            SetGameIsRunning(false);
+            ActivateCoiley = false; // de activating coiley
         }
 
         if (collision.gameObject.tag == "GreenBall")
