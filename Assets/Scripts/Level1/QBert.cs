@@ -6,16 +6,6 @@ using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-//    for (var n = 0; n < 5; n++)
-//    {
-//        renderer.enabled = true;
-//        yield WaitForSeconds(.1);
-//    renderer.enabled = false;
-//    yield WaitForSeconds(.1);
-//}
-//renderer.enabled = true;
-
-
 public class QBert : MonoBehaviour
 {
     public int LocationID, LevelID;
@@ -306,7 +296,6 @@ public class QBert : MonoBehaviour
             Destroy(QbertHealthIcon[QbertHealthIconIndex]);
 
             QbertHealthIconIndex++;
-
         }
         else
         {
