@@ -139,7 +139,7 @@ TextureImporter:
         width: 9
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -160,7 +160,7 @@ TextureImporter:
         width: 9
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,6 +168,27 @@ TextureImporter:
       bones: []
       spriteID: 06bbd3102205c4742b9c0116ec39fc7e
       internalID: 1348575366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Curse
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 276
+        width: 48
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f40bdae88c7cc141b592342f6a66fc1
+      internalID: 652180230
       vertices: []
       indices: 
       edges: []
@@ -185,6 +206,7 @@ TextureImporter:
     nameFileIdTable:
       ArrowLeft: 1348575366
       ArrowRight: -1526681414
+      Curse: 652180230
       QbertLogo: -913300988
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

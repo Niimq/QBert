@@ -233,6 +233,7 @@ public class Balls : MonoBehaviour
             }
         }
         b_InsitCanMove = true;
+
     }
 
     Vector3 MoveToPoint(Vector3 point) // Making it move like so it won't teleport to the target

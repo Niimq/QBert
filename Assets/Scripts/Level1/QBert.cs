@@ -4,6 +4,17 @@ using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+//    for (var n = 0; n < 5; n++)
+//    {
+//        renderer.enabled = true;
+//        yield WaitForSeconds(.1);
+//    renderer.enabled = false;
+//    yield WaitForSeconds(.1);
+//}
+//renderer.enabled = true;
+
 
 public class QBert : MonoBehaviour
 {
@@ -21,11 +32,21 @@ public class QBert : MonoBehaviour
 
     public bool ActivateCoiley;
 
-    bool GameIsRunning;
+    bool GameIsRunning, GameOver, DeathAnimationWorking;
 
-    int whereToJump = 0;
+    int whereToJump = 0, DeathAnimationOverNum;
 
     Animator animator;
+
+    SpriteRenderer spriteRenderer;
+
+    public GameObject GameOverPanel;
+
+    public GameObject Curse;
+
+    [SerializeField]
+    private List<GameObject> QbertHealthIcon;
+    int QbertHealthIconIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -35,31 +56,55 @@ public class QBert : MonoBehaviour
         ActivateCoiley = false;
         animator = GetComponent<Animator>();
         GameIsRunning = true;
+        GameOver = false;
+        Curse.SetActive(false);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        DeathAnimationWorking = true;
+        DeathAnimationOverNum = 0;
+        GameOverPanel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GetGameIsRunning())
+        if (DeathAnimationOverNum > 1000) // this is to flicker the character for the death animation.
+        { 
+            DeathAnimationWorking = false;
+        }
+        if (!GameOver)
         {
-            GetInputs();
+            if (GetGameIsRunning())
+            {
+                GetInputs();
+            }
+            else
+            {
+                StartCoroutine(ResetSimulation());
+            }
+
+            if (onElevatorA)
+                OnElevatorA();
+
+            if (onElevatorB)
+                OnElevatorB();
+
+            if (LevelID == 4)
+            {
+                ActivateCoiley = true;
+            }
         }
         else
         {
-            StartCoroutine(ResetSimulation());
-        }
-
-        if (onElevatorA)
-            OnElevatorA();
-
-        if (onElevatorB)
-            OnElevatorB();
-
-        if (LevelID == 4)
-        {
-            ActivateCoiley = true;
-        }
-
+            //Time.timeScale = 0.0f;
+            if (DeathAnimationWorking)
+            {
+                StartCoroutine(PlayDeathAnimation());
+            }
+            else
+            {
+                StartCoroutine(SetGameOver());
+            }           
+        }       
     }
 
     public bool GetGameIsRunning() // Public - Getter
@@ -78,7 +123,8 @@ public class QBert : MonoBehaviour
         yield return new WaitForSeconds(3);        
        
         SetGameIsRunning(true); 
-        ActivateCoiley = true;       
+        ActivateCoiley = true;
+        Curse.SetActive(false);
     }
 
     void CheckLocation(int id)
@@ -132,6 +178,21 @@ public class QBert : MonoBehaviour
     void SetWhereToJump(int num)
     {
         whereToJump = num;
+    }
+
+    IEnumerator PlayDeathAnimation()
+    {
+        spriteRenderer.enabled = false; 
+        yield return new WaitForSeconds(0.2f);
+        DeathAnimationOverNum++;
+        spriteRenderer.enabled = true;       
+    }
+
+    IEnumerator SetGameOver()
+    {
+        GameOverPanel.SetActive(true);
+       yield return new WaitForSeconds(4.0f);
+        SceneManager.LoadScene(0);
     }
 
     void GetInputs()
@@ -225,12 +286,31 @@ public class QBert : MonoBehaviour
             {
                 SetGameIsRunning(false);
                 ActivateCoiley = false; // de activating coiley
+                Curse.SetActive(true);
+                
+                DecreamentHealth();
             }
         }
 
         if (collision.gameObject.tag == "GreenBall")
         {
-           // Someother behavior.. Need to check the requirements for it. I guess need to destroy the greenball for sure.
+            Destroy(collision.gameObject);
+        }
+    }
+    public void DecreamentHealth()
+    {
+        Debug.Log("DecreameantCAlllelled");
+
+        if (QbertHealthIconIndex < 3) // after his lives are out if he dies Game is over.
+        {
+            Destroy(QbertHealthIcon[QbertHealthIconIndex]);
+
+            QbertHealthIconIndex++;
+
+        }
+        else
+        {
+            GameOver = true;
         }
     }
 }
