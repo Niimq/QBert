@@ -29,7 +29,7 @@ public class Coiley : MonoBehaviour
     private Transform MoveID;
 
     int CoileyID, CoileyLevel;
-
+    bool isCoileyJumpingOff;
     bool CoileyHatched, itCanMove;
     int CoileyPreviousID;
     bool activateCoileyEyes; // :D Coiley Eyes 0~0
@@ -44,6 +44,7 @@ public class Coiley : MonoBehaviour
         CoileyHatched = false;
         itCanMove = true;
         activateCoileyEyes = true;
+        isCoileyJumpingOff = false;
         SpriteRenderer = GetComponent<SpriteRenderer>();
 
     }
@@ -62,7 +63,7 @@ public class Coiley : MonoBehaviour
                  if (Qbert.GetComponent<QBert>().GetGameIsRunning()) // Checking if they collided with eachother or not.
                  {
 
-                    if (itCanMove)
+                    if (itCanMove && !isCoileyJumpingOff)
                     {
                         CoileyPreviousID = 0 + CoileyID;
 
@@ -75,15 +76,17 @@ public class Coiley : MonoBehaviour
 
                         if (CoileyHatched == true)
                         {
-                            if (Qbert.GetComponent<QBert>().GetOnElavtor())
-                            {
-                                if ((CoileyID == 16 || CoileyID == 81))
+                            if (CoileyID == 16 || CoileyID == 81)
+                            { 
+                                if (Qbert.GetComponent<QBert>().GetOnElavtor())
                                 {
+                                    
                                     // Time to play the death animation.
                                     if (CoileyID == 16)
                                     {
                                         MyAnimator(1);
                                         itCanMove = false;
+                                        isCoileyJumpingOff = true;
                                         transform.position += new Vector3(-0.3f, -1.0f) * Time.deltaTime;
 
                                     }
@@ -92,26 +95,20 @@ public class Coiley : MonoBehaviour
                                     {
                                         MyAnimator(2);
                                         itCanMove = false;
+                                        isCoileyJumpingOff = true;
                                         transform.position += new Vector3(0.3f, -1.0f) * Time.deltaTime;
                                     }
+                                
                                 }
-                            }                           
-                            else
+                            }                       
+                            
+                            if (itCanMove == true) // double checking.
                             {
                                 StartCoroutine(CoileyLookWhereYouGoing());
                             }
                         }
                     }
-                    else // this is where jumping off of the platform happens.
-                    {
-                        if (CoileyHatched == true)
-                        {
-
-                            transform.position += new Vector3(0.3f, 1.0f) * Time.deltaTime;
-
-                        }
-                    }
-                }
+                 }
                  else // this is where we call the reset simulation.
                  {
                      resetCoileySimulation();

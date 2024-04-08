@@ -307,7 +307,6 @@ public class QBert : MonoBehaviour
             }
             else
             {
-
                 DyingJumpDirection(0, false);
             }
         }
@@ -364,7 +363,7 @@ public class QBert : MonoBehaviour
 
     public bool GetOnElavtor() // public getter to know if Qbert is on Elevator.
     {
-        if (onElevatorA || onElevatorB)
+        if (onElevatorA == true || onElevatorB == true)
         { return true; }
         else
         { return false; }
