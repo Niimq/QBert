@@ -1,3 +1,15 @@
+//**************************QBERT**TABLE**********************\\\    
+//          0000000000000000000000000000000000000000000000              
+//          0                     1                      0  Left Up: /3 
+//          0                 2       3                  0              
+//          0              4     6      9                0  Left Down: *2
+//          0           8    12     18     27            0              
+//          0        16   24     36     54     81        0  Right Up: /2 
+//          0     32   48     72    108    162   243     0                 
+//          0   64   96   144    216    324   486  729   0  Right Down: *3
+//          0000000000000000000000000000000000000000000000                 
+//**************************QBERT**TABLE**********************\\\
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
@@ -5,6 +17,7 @@ using Unity.VisualScripting;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.FilePathAttribute;
 
 public class QBert : MonoBehaviour
 {
@@ -65,6 +78,8 @@ public class QBert : MonoBehaviour
         rigidbody.isKinematic = false;
         GreenBallEffect = false;
         InitialPos = transform.position;
+        onElevatorA = false;
+        onElevatorB = false;
     }
 
     // Update is called once per frame
@@ -336,7 +351,6 @@ public class QBert : MonoBehaviour
     void OnElevatorA()
     {
         bCheckLocation = false;
-
         transform.position = new Vector3(ElevatorA.transform.position.x, ElevatorA.transform.position.y +
             0.3f, transform.position.z);
     }
@@ -344,9 +358,16 @@ public class QBert : MonoBehaviour
     void OnElevatorB()
     {
         bCheckLocation = false;
-
         transform.position = new Vector3(ElevatorB.transform.position.x, ElevatorB.transform.position.y +
             0.3f, transform.position.z);
+    }
+
+    public bool GetOnElavtor() // public getter to know if Qbert is on Elevator.
+    {
+        if (onElevatorA || onElevatorB)
+        { return true; }
+        else
+        { return false; }
     }
 
     public void ExtiElevator()
@@ -376,6 +397,7 @@ public class QBert : MonoBehaviour
 
             if (collision.gameObject.tag == "GreenBall")
             {
+                // spawning a new green ball.
                 var instantiatedObj = GameObject.Instantiate(collision.gameObject, new Vector3(0.0f, 7.0f, 0.0f), BlockSpawnPoint.rotation);
                 if (instantiatedObj != null) { instantiatedObj.gameObject.tag = "GreenBall"; }
                 Destroy(collision.gameObject);
@@ -383,6 +405,7 @@ public class QBert : MonoBehaviour
             }
         }
     }
+
     public void DecreamentHealth()
     {
         if (QbertHealthIconIndex < 3) // after his lives are out if he dies Game is over.

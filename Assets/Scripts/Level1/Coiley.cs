@@ -45,6 +45,7 @@ public class Coiley : MonoBehaviour
         itCanMove = true;
         activateCoileyEyes = true;
         SpriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -60,24 +61,57 @@ public class Coiley : MonoBehaviour
             { 
                  if (Qbert.GetComponent<QBert>().GetGameIsRunning()) // Checking if they collided with eachother or not.
                  {
-                     if (itCanMove)
-                     {
-                         CoileyPreviousID = 0 + CoileyID;
 
-                         bool activeCoiley = Qbert.GetComponent<QBert>().ActivateCoiley; // Coiley gets spawned
-                         if (activeCoiley && CoileyHatched != true)
-                         {
-                             Debug.Log("Coiley!!");
-                             StartCoroutine(MoveCoileyDown());
-                         }
+                    if (itCanMove)
+                    {
+                        CoileyPreviousID = 0 + CoileyID;
 
-                         if (CoileyHatched == true)
-                         {
-                             // SpriteRenderer.sprite = HatchedCoiley;
-                             StartCoroutine(CoileyLookWhereYouGoing());
-                         }
-                     }
-                 }
+                        bool activeCoiley = Qbert.GetComponent<QBert>().ActivateCoiley; // Coiley gets spawned
+                        if (activeCoiley && CoileyHatched != true)
+                        {
+                            Debug.Log("Coiley!!");
+                            StartCoroutine(MoveCoileyDown());
+                        }
+
+                        if (CoileyHatched == true)
+                        {
+                            if (Qbert.GetComponent<QBert>().GetOnElavtor())
+                            {
+                                if ((CoileyID == 16 || CoileyID == 81))
+                                {
+                                    // Time to play the death animation.
+                                    if (CoileyID == 16)
+                                    {
+                                        MyAnimator(1);
+                                        itCanMove = false;
+                                        transform.position += new Vector3(-0.3f, -1.0f) * Time.deltaTime;
+
+                                    }
+
+                                    if (CoileyID == 81)
+                                    {
+                                        MyAnimator(2);
+                                        itCanMove = false;
+                                        transform.position += new Vector3(0.3f, -1.0f) * Time.deltaTime;
+                                    }
+                                }
+                            }                           
+                            else
+                            {
+                                StartCoroutine(CoileyLookWhereYouGoing());
+                            }
+                        }
+                    }
+                    else // this is where jumping off of the platform happens.
+                    {
+                        if (CoileyHatched == true)
+                        {
+
+                            transform.position += new Vector3(0.3f, 1.0f) * Time.deltaTime;
+
+                        }
+                    }
+                }
                  else // this is where we call the reset simulation.
                  {
                      resetCoileySimulation();
@@ -123,7 +157,6 @@ public class Coiley : MonoBehaviour
 
                     if (transform.position == new Vector3(MoveID.position.x, MoveID.position.y + 0.35f, MoveID.position.z))
                     {
-
                         MyAnimator(10);
                         activateCoileyEyes = true; 
                     }
@@ -452,6 +485,7 @@ public class Coiley : MonoBehaviour
         // BTW I can write cleaner code too with more comments and more setters and getters. but for now I'm kinda rushing this.
         CoileyHatched = false;
         activateCoileyEyes = true;
+        itCanMove = true;
         CoileyID = 0;
         CoileyPreviousID = 0;
         transform.position = _spawnPoint.position; // setting him back to his original spawn point position.
