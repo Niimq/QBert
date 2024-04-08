@@ -274,7 +274,7 @@ public class Coiley : MonoBehaviour
 
     void CoileyDecides()
     {
-        int TargetID = Qbert.GetComponent<QBert>().LocationID;
+        float TargetID = Qbert.GetComponent<QBert>().LocationID;
         float NextBlockIDA, NextBlockIDB;
 
         if (CoileyLevel > Qbert.GetComponent<QBert>().LevelID) // if coiley is lower than Qbert in the blocks
@@ -379,7 +379,7 @@ public class Coiley : MonoBehaviour
         }
     }
 
-    bool GetQbertOnTheLeft(float IDA, float IDB, int TargetID, bool GoingUp)
+    bool GetQbertOnTheLeft(float IDA, float IDB, float TargetID, bool GoingUp)
     {
         if (GoingUp)
         {

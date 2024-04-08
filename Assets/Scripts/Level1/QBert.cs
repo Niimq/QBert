@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class QBert : MonoBehaviour
 {
-    public int LocationID, LevelID;
+    public int LevelID;
+    public float LocationID;
 
     Transform Blocktransform;
 
@@ -33,6 +34,9 @@ public class QBert : MonoBehaviour
     public GameObject GameOverPanel;
 
     public GameObject Curse;
+    new Rigidbody2D rigidbody;
+
+    CapsuleCollider2D CapsuleCollider;
 
     [SerializeField]
     private List<GameObject> QbertHealthIcon;
@@ -45,42 +49,64 @@ public class QBert : MonoBehaviour
         bCheckLocation = true;
         ActivateCoiley = false;
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rigidbody = GetComponent<Rigidbody2D>();
+        CapsuleCollider = GetComponent<CapsuleCollider2D>();
         GameIsRunning = true;
         GameOver = false;
         Curse.SetActive(false);
-        spriteRenderer = GetComponent<SpriteRenderer>();
         DeathAnimationWorking = true;
         DeathAnimationOverNum = 0;
         GameOverPanel.SetActive(false);
+        rigidbody.isKinematic = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (DeathAnimationOverNum > 1000) // this is to flicker the character for the death animation.
-        { 
+        {
             DeathAnimationWorking = false;
         }
+
         if (!GameOver)
         {
-            if (GetGameIsRunning())
+
+            if (LocationID % 1 == 0)
             {
-                GetInputs();
+                if (GetGameIsRunning())
+                {
+                    GetInputs();
+                }
+                else
+                {
+                    StartCoroutine(ResetSimulation());
+                }
+
+                if (onElevatorA)
+                    OnElevatorA();
+
+                if (onElevatorB)
+                    OnElevatorB();
+
+                if (LevelID == 4)
+                {
+                    ActivateCoiley = true;
+                }
             }
             else
             {
-                StartCoroutine(ResetSimulation());
-            }
+                if (whereToJump == 1)
+                {
+                    // if left up was pressed.
+                    DyingJumpDirection(1, true);
+                }
 
-            if (onElevatorA)
-                OnElevatorA();
-
-            if (onElevatorB)
-                OnElevatorB();
-
-            if (LevelID == 4)
-            {
-                ActivateCoiley = true;
+                if (whereToJump == 4)
+                {
+                    // Right Up Idle Transation Set
+                    DyingJumpDirection(0, true);
+                }               
             }
         }
         else
@@ -93,8 +119,8 @@ public class QBert : MonoBehaviour
             else
             {
                 StartCoroutine(SetGameOver());
-            }           
-        }       
+            }
+        }
     }
 
     public bool GetGameIsRunning() // Public - Getter
@@ -110,14 +136,14 @@ public class QBert : MonoBehaviour
 
     IEnumerator ResetSimulation()
     {
-        yield return new WaitForSeconds(3);        
-       
-        SetGameIsRunning(true); 
+        yield return new WaitForSeconds(3);
+
+        SetGameIsRunning(true);
         ActivateCoiley = true;
         Curse.SetActive(false);
     }
 
-    void CheckLocation(int id)
+    void CheckLocation(float id)
     {
 
         for (int i = 0; i < Blocks.Count; i++)
@@ -165,6 +191,35 @@ public class QBert : MonoBehaviour
         return whereToJump;
     }
 
+    void DyingJumpDirection(int index, bool IsNotLevel7)
+    {
+        switch (index)
+        { 
+            case 0:
+            // He jumped right down from pyramid.
+            LocationID = 1;
+            CapsuleCollider.isTrigger = true;
+            bCheckLocation = false;
+            rigidbody.AddForce(new Vector2(0.7f, 1.5f), ForceMode2D.Impulse);
+            rigidbody.gravityScale = 1;
+                if (IsNotLevel7)
+                    spriteRenderer.sortingOrder = 0;
+                break;
+
+            case 1:
+            // He jumped left down from pyramid.
+            LocationID = 1;
+            CapsuleCollider.isTrigger = true;
+            bCheckLocation = false;
+            rigidbody.AddForce(new Vector2(-0.7f, 1.5f), ForceMode2D.Impulse);
+            rigidbody.gravityScale = 1;
+                if (IsNotLevel7)
+                    spriteRenderer.sortingOrder = 0;
+                break;
+        }
+        
+    }
+
     void SetWhereToJump(int num)
     {
         whereToJump = num;
@@ -172,16 +227,16 @@ public class QBert : MonoBehaviour
 
     IEnumerator PlayDeathAnimation()
     {
-        spriteRenderer.enabled = false; 
+        spriteRenderer.enabled = false;
         yield return new WaitForSeconds(0.2f);
         DeathAnimationOverNum++;
-        spriteRenderer.enabled = true;       
+        spriteRenderer.enabled = true;
     }
 
     IEnumerator SetGameOver()
     {
         GameOverPanel.SetActive(true);
-       yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(4.0f);
         SceneManager.LoadScene(0);
     }
 
@@ -206,20 +261,38 @@ public class QBert : MonoBehaviour
             }
         }
         if (Input.GetKeyDown(KeyCode.E))
-        {
+        {            
             SetWhereToJump(2);
             animator.SetInteger("WhereToJump", whereToJump); // 2 meaning Right Down
-            LocationID *= 3;
-            Debug.Log(LocationID);
-            bCheckLocation = true;
+
+            if (LevelID != 7) // making sure that we are not at level 7 so we can know if this function gets called when we are at level 7 meaning that we jumped down.
+            {
+                
+                LocationID *= 3;
+                Debug.Log(LocationID);
+                bCheckLocation = true;
+            }
+            else
+            {
+
+                DyingJumpDirection(0, false);
+            }
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
             SetWhereToJump(3);
             animator.SetInteger("WhereToJump", whereToJump); // 3 meaning Left Down
-            LocationID *= 2;
-            Debug.Log(LocationID);
-            bCheckLocation = true;
+            if (LevelID != 7) // making sure that we are not at level 7
+            {
+                
+                LocationID *= 2;
+                Debug.Log(LocationID);
+                bCheckLocation = true;
+            }
+            else
+            {
+                DyingJumpDirection(1, false);
+            }
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -238,7 +311,7 @@ public class QBert : MonoBehaviour
         }
 
 
-        if (bCheckLocation) // when on elevator don't check the location.
+        if (bCheckLocation) // Switch for if we want apply checklocation or not.
         { CheckLocation(LocationID); }
     }
 
@@ -289,8 +362,6 @@ public class QBert : MonoBehaviour
     }
     public void DecreamentHealth()
     {
-        Debug.Log("DecreameantCAlllelled");
-
         if (QbertHealthIconIndex < 3) // after his lives are out if he dies Game is over.
         {
             Destroy(QbertHealthIcon[QbertHealthIconIndex]);
