@@ -37,12 +37,14 @@ public class Block : MonoBehaviour
         if (Switch)
         {
             SpriteRenderer.sprite = CompletedBlock;
+            QBert.GetComponent<QBert>().AddScore(25);
+            Switch = false;
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject == QBert)
+        if (collision.gameObject == QBert && SpriteRenderer.sprite != CompletedBlock) // and make sure the block is not a completed block.
         {
             Switch = true; // Setting the switch to true to it can change color.
         }

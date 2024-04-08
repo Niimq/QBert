@@ -61,6 +61,7 @@ public class Coiley : MonoBehaviour
     {
         if (transform.position.y < -2.0f)
         {
+            Qbert.GetComponent<QBert>().AddScore(500);
             CoileyAnimationDone = true;
             StartCoroutine(SpawnCoileyAfter5Seconds());
         }
@@ -144,8 +145,7 @@ public class Coiley : MonoBehaviour
                 {
                     resetCoileySimulation();
                 }
-            }
-            
+            }           
         }
     }
 

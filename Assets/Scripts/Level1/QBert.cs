@@ -13,6 +13,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Animations;
 using UnityEditor.Search;
@@ -56,6 +57,8 @@ public class QBert : MonoBehaviour
     public GameObject Curse;
     new Rigidbody2D rigidbody;
 
+    public TMP_Text text;
+
     CapsuleCollider2D CapsuleCollider;
 
     AudioSource audioSource;
@@ -63,6 +66,8 @@ public class QBert : MonoBehaviour
     [SerializeField]
     private List<GameObject> QbertHealthIcon;
     int QbertHealthIconIndex = 0;
+
+    int Score;
 
     // Start is called before the first frame update
     void Start()
@@ -87,10 +92,17 @@ public class QBert : MonoBehaviour
         onElevatorA = false;
         onElevatorB = false;
         enableInput = true;
+        text.text = ""+Score;
         if (audioClipArray.Length != 0)
         {
             audioSource.PlayOneShot(audioClipArray[5]);
         }
+    }
+
+    public void AddScore(int ScoreAmount) // Public Function.
+    {
+        Score += ScoreAmount;
+        text.text = ""+Score;
     }
 
     // Update is called once per frame
@@ -478,6 +490,7 @@ public class QBert : MonoBehaviour
             {
                 // spawning a new green ball.
                 audioSource.PlayOneShot(audioClipArray[7]); // greenBall Effect
+                AddScore(100);
                 var instantiatedObj = GameObject.Instantiate(collision.gameObject, new Vector3(0.0f, 7.0f, 0.0f), BlockSpawnPoint.rotation);
                 if (instantiatedObj != null) { instantiatedObj.gameObject.tag = "GreenBall"; }
                 Destroy(collision.gameObject);
