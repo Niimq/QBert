@@ -29,9 +29,10 @@ public class Coiley : MonoBehaviour
     private Transform MoveID;
 
     int CoileyID, CoileyLevel;
-    bool isCoileyJumpingOff;
+    public bool isCoileyJumpingOff;
     bool CoileyHatched, itCanMove;
     int CoileyPreviousID;
+    int i = 0;
     bool activateCoileyEyes; // :D Coiley Eyes 0~0
 
     // Start is called before the first frame update
@@ -52,6 +53,11 @@ public class Coiley : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y < -2.0f)
+        {
+            StartCoroutine(SpawnCoileyAfter5Seconds());
+        }
+
         if (Qbert != null)
         {
             if (Qbert.GetComponent<QBert>().GreenBallEffect)
@@ -59,7 +65,8 @@ public class Coiley : MonoBehaviour
                 StartCoroutine(ApplyGreenBallEffect());
             }
             else
-            { 
+            {
+               
                  if (Qbert.GetComponent<QBert>().GetGameIsRunning()) // Checking if they collided with eachother or not.
                  {
 
@@ -77,14 +84,15 @@ public class Coiley : MonoBehaviour
                         if (CoileyHatched == true)
                         {
                             if (CoileyID == 16 || CoileyID == 81)
-                            { 
+                            {
                                 if (Qbert.GetComponent<QBert>().GetOnElavtor())
                                 {
-                                    
+
                                     // Time to play the death animation.
                                     if (CoileyID == 16)
                                     {
-                                        MyAnimator(1);
+                                        i = 1;
+                                        MyAnimator(i);
                                         itCanMove = false;
                                         isCoileyJumpingOff = true;
                                         transform.position += new Vector3(-0.3f, -1.0f) * Time.deltaTime;
@@ -93,20 +101,36 @@ public class Coiley : MonoBehaviour
 
                                     if (CoileyID == 81)
                                     {
-                                        MyAnimator(2);
+                                        i = 2;
+                                        MyAnimator(i);
                                         itCanMove = false;
                                         isCoileyJumpingOff = true;
                                         transform.position += new Vector3(0.3f, -1.0f) * Time.deltaTime;
                                     }
-                                
+
                                 }
-                            }                       
-                            
+                            }
+
                             if (itCanMove == true) // double checking.
                             {
                                 StartCoroutine(CoileyLookWhereYouGoing());
                             }
                         }
+                    }
+
+                    if (isCoileyJumpingOff && CoileyHatched)
+                    {
+                        if (i == 1)
+                        {
+                            transform.position += new Vector3(-0.3f, -1.0f) * Time.deltaTime * 2;
+                            SpriteRenderer.sortingOrder = 0;
+                        }
+                        else if (i == 2)
+                        {
+                            transform.position += new Vector3(0.3f, -1.0f) * Time.deltaTime * 2;
+                            SpriteRenderer.sortingOrder = 0;
+                        }
+                     
                     }
                  }
                  else // this is where we call the reset simulation.
@@ -116,6 +140,14 @@ public class Coiley : MonoBehaviour
             }
             
         }
+    }
+
+    IEnumerator SpawnCoileyAfter5Seconds()
+    {
+        resetCoileySimulation();
+        itCanMove = false;
+        yield return new WaitForSeconds(5.0f);
+        itCanMove = true;
     }
 
     IEnumerator ApplyGreenBallEffect()
@@ -163,7 +195,7 @@ public class Coiley : MonoBehaviour
 
         Debug.Log(CoileyID);
         itCanMove = false;
-        yield return new WaitForSeconds(0.10f);
+        yield return new WaitForSeconds(0.010f);
         itCanMove = true;
         if (CoileyLevel == 7)
             CoileyHatched = true;
@@ -483,8 +515,10 @@ public class Coiley : MonoBehaviour
         CoileyHatched = false;
         activateCoileyEyes = true;
         itCanMove = true;
+        isCoileyJumpingOff = false;
         CoileyID = 0;
         CoileyPreviousID = 0;
+        SpriteRenderer.sortingOrder = 2;
         transform.position = _spawnPoint.position; // setting him back to his original spawn point position.
     }
 }

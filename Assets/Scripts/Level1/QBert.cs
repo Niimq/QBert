@@ -160,7 +160,7 @@ public class QBert : MonoBehaviour
     public bool GetGameIsRunning() // Public - Getter
     { return GameIsRunning; }
 
-    void SetGameIsRunning(bool condition) // Setter
+    public void SetGameIsRunning(bool condition) // Public - Setter
     { GameIsRunning = condition; }
 
     Vector3 MoveToPoint(Vector3 point) // Making it move like so it won't teleport to the target

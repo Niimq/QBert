@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Balls : MonoBehaviour
@@ -9,7 +10,7 @@ public class Balls : MonoBehaviour
     [SerializeField] 
     public Transform SpawnPoint;
 
-    public GameObject Qbert;
+    public GameObject Qbert, Coiley;
     GameObject newBall;
 
     SpriteRenderer spriteRenderer;
@@ -37,7 +38,11 @@ public class Balls : MonoBehaviour
     {
         if (Qbert.GetComponent<QBert>().GreenBallEffect)
         {
-            StartCoroutine(ApplyGreenBallEffect());            
+            StartCoroutine(ApplyGreenBallEffect());
+        }
+        else if (Coiley.GetComponent<Coiley>().isCoileyJumpingOff && !isGreenBall)
+        {
+            StartCoroutine(ApplyCoileyEffect());
         }
         else
         { 
@@ -60,6 +65,14 @@ public class Balls : MonoBehaviour
             }
         }
       
+    }
+
+    IEnumerator ApplyCoileyEffect()
+    {   
+        ResetSimulation();
+        b_itCanMove = false;
+        yield return new WaitForSeconds(5.5f);
+        b_itCanMove = true;
     }
 
     IEnumerator ApplyGreenBallEffect()

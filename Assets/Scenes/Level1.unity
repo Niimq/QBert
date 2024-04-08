@@ -2282,6 +2282,7 @@ MonoBehaviour:
   greenBallIdle: {fileID: 435682972, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
   SpawnPoint: {fileID: 518210459}
   Qbert: {fileID: 680180427}
+  Coiley: {fileID: 601067214}
   MovementSpeedByTime: 0.6
   isGreenBall: 0
 --- !u!58 &483671699
@@ -2910,6 +2911,7 @@ MonoBehaviour:
   CoileyLeftDownIdle: {fileID: 979848184, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
   CoileyRightDownIdle: {fileID: -331540970, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
   _spawnPoint: {fileID: 518210459}
+  isCoileyJumpingOff: 0
 --- !u!212 &601067216
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6876,6 +6878,7 @@ MonoBehaviour:
   greenBallIdle: {fileID: 435682972, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
   SpawnPoint: {fileID: 518210459}
   Qbert: {fileID: 680180427}
+  Coiley: {fileID: 601067214}
   MovementSpeedByTime: 0.3
   isGreenBall: 1
 --- !u!58 &1730850146
