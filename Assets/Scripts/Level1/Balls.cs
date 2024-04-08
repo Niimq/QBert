@@ -40,7 +40,7 @@ public class Balls : MonoBehaviour
         {
             StartCoroutine(ApplyGreenBallEffect());
         }
-        else if (Coiley.GetComponent<Coiley>().isCoileyJumpingOff && !isGreenBall)
+        else if (Coiley.GetComponent<Coiley>().CoileyAnimationDone && !isGreenBall)
         {
             StartCoroutine(ApplyCoileyEffect());
         }
@@ -63,8 +63,7 @@ public class Balls : MonoBehaviour
             {
                 ResetSimulation();
             }
-        }
-      
+        }      
     }
 
     IEnumerator ApplyCoileyEffect()
