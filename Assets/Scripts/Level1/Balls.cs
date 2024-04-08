@@ -215,10 +215,8 @@ public class Balls : MonoBehaviour
             Destroy(newBall); // Destroy the current ball
             Respawn(); // Respawn a new ball
             
-        }
-        
-            b_itCanMove = true; // Continue moving the ball
-        
+        }      
+            b_itCanMove = true; // Continue moving the ball       
     }
 
     public void Respawn()

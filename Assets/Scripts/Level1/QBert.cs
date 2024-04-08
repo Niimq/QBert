@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEditor.Animations;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEditor.FilePathAttribute;
@@ -27,6 +28,8 @@ public class QBert : MonoBehaviour
     Transform Blocktransform;
     public GameObject GreenBallPrefab;
     public Transform BlockSpawnPoint;
+
+    public AudioClip[] audioClipArray;
 
     Vector3 InitialPos;
 
@@ -41,7 +44,7 @@ public class QBert : MonoBehaviour
     public bool ActivateCoiley, GreenBallEffect;
 
     bool GameIsRunning, GameOver, DeathAnimationWorking;
-
+    bool enableInput, playonce = true;
     int whereToJump = 0, DeathAnimationOverNum;
 
     Animator animator;
@@ -54,6 +57,8 @@ public class QBert : MonoBehaviour
     new Rigidbody2D rigidbody;
 
     CapsuleCollider2D CapsuleCollider;
+
+    AudioSource audioSource;
 
     [SerializeField]
     private List<GameObject> QbertHealthIcon;
@@ -69,6 +74,7 @@ public class QBert : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody = GetComponent<Rigidbody2D>();
         CapsuleCollider = GetComponent<CapsuleCollider2D>();
+        audioSource = GetComponent<AudioSource>();
         GameIsRunning = true;
         GameOver = false;
         Curse.SetActive(false);
@@ -80,12 +86,17 @@ public class QBert : MonoBehaviour
         InitialPos = transform.position;
         onElevatorA = false;
         onElevatorB = false;
+        enableInput = true;
+        if (audioClipArray.Length != 0)
+        {
+            audioSource.PlayOneShot(audioClipArray[5]);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         if (transform.position.y < -5)
         {
             SetGameIsRunning(false);
@@ -110,7 +121,11 @@ public class QBert : MonoBehaviour
             {
                 if (GetGameIsRunning())
                 {
-                    GetInputs();
+                    if (bCheckLocation) // Switch for if we want apply checklocation or not.
+                    { UpdateLocation(LocationID); }
+
+                    if (enableInput)
+                        GetInputs();
                 }
                 else
                 {
@@ -145,11 +160,17 @@ public class QBert : MonoBehaviour
         }
         else
         {
-            //Time.timeScale = 0.0f;
+            if (playonce) // we should play the GameOver sound effect only once for Qbert.
+            {
+                audioSource.PlayOneShot(audioClipArray[6]);
+                playonce = false;
+            }
+
             if (DeathAnimationWorking)
             {
                 StartCoroutine(PlayDeathAnimation());
             }
+
             else
             {
                 StartCoroutine(DisplayGameOver());
@@ -190,6 +211,7 @@ public class QBert : MonoBehaviour
                 {
                     animator.SetInteger("WhereToJump", GetWhereToJumpAfterLand());
                     bCheckLocation = false; // making sure that player doesn't jitter.
+                    enableInput = true;
                 }
             }
         }
@@ -226,31 +248,62 @@ public class QBert : MonoBehaviour
 
     void DyingJumpDirection(int index, bool IsNotLevel7)
     {
+        // we should play the falling sound effect only once for Qbert.              
+            audioSource.PlayOneShot(audioClipArray[3]);
         switch (index)
-        { 
+        {
             case 0:
-            // He jumped right down from pyramid.
-            LocationID = 1;
-            CapsuleCollider.isTrigger = true;
-            bCheckLocation = false;
-            rigidbody.AddForce(new Vector2(0.7f, 1.5f), ForceMode2D.Impulse);
-            rigidbody.gravityScale = 1;
+                // He jumped right down from pyramid.
+                LocationID = 1;
+                CapsuleCollider.isTrigger = true;
+                bCheckLocation = false;
+                rigidbody.AddForce(new Vector2(0.7f, 1.5f), ForceMode2D.Impulse);
+                rigidbody.gravityScale = 1;
                 if (IsNotLevel7)
                     spriteRenderer.sortingOrder = 0;
                 break;
 
             case 1:
-            // He jumped left down from pyramid.
-            LocationID = 1;
-            CapsuleCollider.isTrigger = true;
-            bCheckLocation = false;
-            rigidbody.AddForce(new Vector2(-0.7f, 1.5f), ForceMode2D.Impulse);
-            rigidbody.gravityScale = 1;
+                // He jumped left down from pyramid.
+                LocationID = 1;
+                CapsuleCollider.isTrigger = true;
+                bCheckLocation = false;
+                rigidbody.AddForce(new Vector2(-0.7f, 1.5f), ForceMode2D.Impulse);
+                rigidbody.gravityScale = 1;
                 if (IsNotLevel7)
                     spriteRenderer.sortingOrder = 0;
                 break;
         }
         
+    }
+
+    AudioClip ReturnRandomJumpSoundEffect()
+    {
+        if (Random.value < 0.5f)
+        {
+            return audioClipArray[0];
+        }
+        else if (Random.value < 0.5f)
+        {
+            return audioClipArray[1];
+        }
+        else
+        {
+            return audioClipArray[2];
+        }
+              
+    }
+    
+    AudioClip ReturnRandomCurseSoundEffect()
+    {
+        if (Random.value < 0.5f)
+        {
+            return audioClipArray[8];
+        }
+        else
+        {
+            return audioClipArray[9];
+        }
     }
 
     void SetWhereToJump(int num)
@@ -275,17 +328,22 @@ public class QBert : MonoBehaviour
 
     void GetInputs()
     {
-        animator.SetBool("OnElevatorA", onElevatorA);
-        animator.SetBool("OnElevatorB", onElevatorB);
-
+        
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            enableInput = false;
             if (LocationID == 16 && ElevatorA != null)
             {
                 onElevatorA = true;
+                animator.SetBool("OnElevatorA", onElevatorA);
+                audioSource.PlayOneShot(audioClipArray[4]);
             }
             else
             {
+                if (audioClipArray.Length != 0)
+                {
+                    audioSource.PlayOneShot(ReturnRandomJumpSoundEffect());
+                }
                 SetWhereToJump(1);
                 animator.SetInteger("WhereToJump", whereToJump); // 1 meaning Left Up 
                 LocationID /= 3;
@@ -294,9 +352,16 @@ public class QBert : MonoBehaviour
             }
         }
         if (Input.GetKeyDown(KeyCode.E))
-        {            
+        {
+            enableInput = false;
+            if (audioClipArray.Length != 0)
+            {
+                audioSource.PlayOneShot(ReturnRandomJumpSoundEffect());
+            }
+
             SetWhereToJump(2);
             animator.SetInteger("WhereToJump", whereToJump); // 2 meaning Right Down
+
 
             if (LevelID != 7) // making sure that we are not at level 7 so we can know if this function gets called when we are at level 7 meaning that we jumped down.
             {
@@ -312,6 +377,12 @@ public class QBert : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            enableInput = false;
+            if (audioClipArray.Length != 0)
+            {
+                audioSource.PlayOneShot(ReturnRandomJumpSoundEffect());
+            }
+
             SetWhereToJump(3);
             animator.SetInteger("WhereToJump", whereToJump); // 3 meaning Left Down
             if (LevelID != 7) // making sure that we are not at level 7
@@ -328,12 +399,20 @@ public class QBert : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
+            enableInput = false;
             if (LocationID == 81 && ElevatorB != null)
             {
                 onElevatorB = true;
+                animator.SetBool("OnElevatorB", onElevatorB);
+                audioSource.PlayOneShot(audioClipArray[4]);
             }
             else
             {
+                if (audioClipArray.Length != 0)
+                {
+                    audioSource.PlayOneShot(ReturnRandomJumpSoundEffect());
+                }
+
                 SetWhereToJump(4);
                 animator.SetInteger("WhereToJump", whereToJump); // 4 meaning Right Up
                 LocationID /= 2;
@@ -341,14 +420,12 @@ public class QBert : MonoBehaviour
                 bCheckLocation = true;
             }
         }
-
-
-        if (bCheckLocation) // Switch for if we want apply checklocation or not.
-        { UpdateLocation(LocationID); }
+        
     }
 
     void OnElevatorA()
     {
+        
         bCheckLocation = false;
         transform.position = new Vector3(ElevatorA.transform.position.x, ElevatorA.transform.position.y +
             0.3f, transform.position.z);
@@ -356,6 +433,7 @@ public class QBert : MonoBehaviour
 
     void OnElevatorB()
     {
+        
         bCheckLocation = false;
         transform.position = new Vector3(ElevatorB.transform.position.x, ElevatorB.transform.position.y +
             0.3f, transform.position.z);
@@ -376,6 +454,8 @@ public class QBert : MonoBehaviour
         LocationID = 1;
         onElevatorA = false;
         onElevatorB = false;
+        animator.SetBool("OnElevatorA", onElevatorA);
+        animator.SetBool("OnElevatorB", onElevatorB);
         bCheckLocation = true;
     }
 
@@ -385,7 +465,7 @@ public class QBert : MonoBehaviour
         {
             if (collision.gameObject.tag == "Enemy")
             {
-
+                audioSource.PlayOneShot(ReturnRandomCurseSoundEffect());
                 SetGameIsRunning(false);
                 ActivateCoiley = false; // de activating coiley
                 Curse.SetActive(true);
@@ -397,6 +477,7 @@ public class QBert : MonoBehaviour
             if (collision.gameObject.tag == "GreenBall")
             {
                 // spawning a new green ball.
+                audioSource.PlayOneShot(audioClipArray[7]); // greenBall Effect
                 var instantiatedObj = GameObject.Instantiate(collision.gameObject, new Vector3(0.0f, 7.0f, 0.0f), BlockSpawnPoint.rotation);
                 if (instantiatedObj != null) { instantiatedObj.gameObject.tag = "GreenBall"; }
                 Destroy(collision.gameObject);
