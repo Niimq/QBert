@@ -52,32 +52,47 @@ public class Coiley : MonoBehaviour
     {
         if (Qbert != null)
         {
-            if (Qbert.GetComponent<QBert>().GetGameIsRunning()) // Checking if they collided with eachother or not.
+            if (Qbert.GetComponent<QBert>().GreenBallEffect)
             {
-                if (itCanMove)
-                {
-                    CoileyPreviousID = 0 + CoileyID;
-
-                    bool activeCoiley = Qbert.GetComponent<QBert>().ActivateCoiley; // Coiley gets spawned
-                    if (activeCoiley && CoileyHatched != true)
-                    {
-                        Debug.Log("Coiley!!");
-                        StartCoroutine(MoveCoileyDown());
-                    }
-
-                    if (CoileyHatched == true)
-                    {
-                        // SpriteRenderer.sprite = HatchedCoiley;
-                        StartCoroutine(CoileyLookWhereYouGoing());
-                    }
-                }
+                StartCoroutine(ApplyGreenBallEffect());
             }
-            else // this is where we call the reset simulation.
-            {
-                resetCoileySimulation();
+            else
+            { 
+                 if (Qbert.GetComponent<QBert>().GetGameIsRunning()) // Checking if they collided with eachother or not.
+                 {
+                     if (itCanMove)
+                     {
+                         CoileyPreviousID = 0 + CoileyID;
+
+                         bool activeCoiley = Qbert.GetComponent<QBert>().ActivateCoiley; // Coiley gets spawned
+                         if (activeCoiley && CoileyHatched != true)
+                         {
+                             Debug.Log("Coiley!!");
+                             StartCoroutine(MoveCoileyDown());
+                         }
+
+                         if (CoileyHatched == true)
+                         {
+                             // SpriteRenderer.sprite = HatchedCoiley;
+                             StartCoroutine(CoileyLookWhereYouGoing());
+                         }
+                     }
+                 }
+                 else // this is where we call the reset simulation.
+                 {
+                     resetCoileySimulation();
+                 }
             }
+            
         }
     }
+
+    IEnumerator ApplyGreenBallEffect()
+    { 
+        yield return new WaitForSeconds(3.0f);
+        Qbert.GetComponent<QBert>().GreenBallEffect = false;
+    }
+
 
     IEnumerator MoveCoileyDown()
     {

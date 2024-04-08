@@ -14,8 +14,6 @@ public class Balls : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
-    [SerializeField] private int value = 1;
-
     public float MovementSpeedByTime = 0.3f;
 
     int chosenNumber, SpawnBlockID, Level;
@@ -25,14 +23,6 @@ public class Balls : MonoBehaviour
     private bool b_itCanMove;
     bool activateBallDecision;
     bool OriginalMovementDone, b_InsitCanMove;
-
-    public int Value
-    {
-        get
-        {
-            return value;
-        }
-    }
 
     private void Start()
     {
@@ -45,24 +35,37 @@ public class Balls : MonoBehaviour
 
     private void Update()
     {
-        if (Qbert.GetComponent<QBert>().GetGameIsRunning())
+        if (Qbert.GetComponent<QBert>().GreenBallEffect)
         {
-            if (OriginalMovementDone && b_itCanMove)
-            {
-                StartCoroutine(MoveBallsDown());
-            }
-      
-            if (b_InsitCanMove == true)
-            {
-                Debug.Log("Reached");
-                StartCoroutine(MoveInstantiateDown());
-            }
+            StartCoroutine(ApplyGreenBallEffect());            
         }
         else
-        {
-            ResetSimulation();
+        { 
+            if (Qbert.GetComponent<QBert>().GetGameIsRunning())
+            {
+                if (OriginalMovementDone && b_itCanMove)
+                {
+                    StartCoroutine(MoveBallsDown());
+                }
+
+                if (b_InsitCanMove == true)
+                {
+                    Debug.Log("Reached");
+                    StartCoroutine(MoveInstantiateDown());
+                }
+            }
+            else
+            {
+                ResetSimulation();
+            }
         }
-        
+      
+    }
+
+    IEnumerator ApplyGreenBallEffect()
+    {
+        yield return new WaitForSeconds(3.0f);
+        Qbert.GetComponent<QBert>().GreenBallEffect = false;
     }
 
     void MyOwnAnimator(int index)

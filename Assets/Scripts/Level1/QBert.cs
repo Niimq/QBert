@@ -12,6 +12,8 @@ public class QBert : MonoBehaviour
     public float LocationID;
 
     Transform Blocktransform;
+    public GameObject GreenBallPrefab;
+    public Transform BlockSpawnPoint;
 
     Vector3 InitialPos;
 
@@ -23,7 +25,7 @@ public class QBert : MonoBehaviour
 
     bool bCheckLocation, onElevatorA, onElevatorB;
 
-    public bool ActivateCoiley;
+    public bool ActivateCoiley, GreenBallEffect;
 
     bool GameIsRunning, GameOver, DeathAnimationWorking;
 
@@ -61,6 +63,7 @@ public class QBert : MonoBehaviour
         DeathAnimationOverNum = 0;
         GameOverPanel.SetActive(false);
         rigidbody.isKinematic = false;
+        GreenBallEffect = false;
         InitialPos = transform.position;
     }
 
@@ -161,7 +164,6 @@ public class QBert : MonoBehaviour
 
     void UpdateLocation(float id)
     {
-
         for (int i = 0; i < Blocks.Count; i++)
         {
             if (id == Blocks[i].gameObject.GetComponent<Block>().blockID)
@@ -359,21 +361,26 @@ public class QBert : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (onElevatorA == false && onElevatorB == false) //  we don't care if Qbert is on Elevator.
         {
-            if (onElevatorA == false && onElevatorB == false) //  we don't care if Qbert is on Elevator.
+            if (collision.gameObject.tag == "Enemy")
             {
+
                 SetGameIsRunning(false);
                 ActivateCoiley = false; // de activating coiley
                 Curse.SetActive(true);
-                
-                DecreamentHealth();
-            }
-        }
 
-        if (collision.gameObject.tag == "GreenBall")
-        {
-            Destroy(collision.gameObject);
+                DecreamentHealth();
+
+            }
+
+            if (collision.gameObject.tag == "GreenBall")
+            {
+                var instantiatedObj = GameObject.Instantiate(collision.gameObject, new Vector3(0.0f, 7.0f, 0.0f), BlockSpawnPoint.rotation);
+                if (instantiatedObj != null) { instantiatedObj.gameObject.tag = "GreenBall"; }
+                Destroy(collision.gameObject);
+                GreenBallEffect = true;
+            }
         }
     }
     public void DecreamentHealth()
@@ -381,7 +388,6 @@ public class QBert : MonoBehaviour
         if (QbertHealthIconIndex < 3) // after his lives are out if he dies Game is over.
         {
             Destroy(QbertHealthIcon[QbertHealthIconIndex]);
-
             QbertHealthIconIndex++;
         }
         else

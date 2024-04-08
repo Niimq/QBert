@@ -2280,9 +2280,8 @@ MonoBehaviour:
   redBallIdle: {fileID: 1649690556, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
   greenBallAir: {fileID: -2142109384, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
   greenBallIdle: {fileID: 435682972, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
-  SpawnPoint: {fileID: 1622715619}
+  SpawnPoint: {fileID: 518210459}
   Qbert: {fileID: 680180427}
-  value: 1
   MovementSpeedByTime: 0.6
   isGreenBall: 0
 --- !u!58 &483671699
@@ -2466,6 +2465,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.14, y: 0.12}
   m_EdgeRadius: 0
+--- !u!1 &518210458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 518210459}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &518210459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518210458}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.01, y: 8.99, z: 0.12554161}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2879,7 +2909,7 @@ MonoBehaviour:
   CoileyRightUpIdle: {fileID: -1132822779, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
   CoileyLeftDownIdle: {fileID: 979848184, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
   CoileyRightDownIdle: {fileID: -331540970, guid: d1b817cdf1245f941913dfb74c9d1b0e, type: 3}
-  _spawnPoint: {fileID: 1622715619}
+  _spawnPoint: {fileID: 518210459}
 --- !u!212 &601067216
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3669,6 +3699,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelID: 0
   LocationID: 0
+  GreenBallPrefab: {fileID: 959181104681272449, guid: 0d90392ad4f045f4a921f390e9589c27, type: 3}
+  BlockSpawnPoint: {fileID: 518210459}
   Blocks:
   - {fileID: 184585373}
   - {fileID: 331355848}
@@ -3701,6 +3733,7 @@ MonoBehaviour:
   ElevatorA: {fileID: 2100619480}
   ElevatorB: {fileID: 1796231174}
   ActivateCoiley: 0
+  GreenBallEffect: 0
   GameOverPanel: {fileID: 2022509792}
   Curse: {fileID: 2107511624}
   QbertHealthIcon:
@@ -6217,37 +6250,6 @@ Transform:
   - {fileID: 1691478617}
   m_Father: {fileID: 2110643580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1622715618
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1622715619}
-  m_Layer: 0
-  m_Name: SpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1622715619
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622715618}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 8.99, z: 0.12554161}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1636967674
 GameObject:
   m_ObjectHideFlags: 0
@@ -6872,9 +6874,8 @@ MonoBehaviour:
   redBallIdle: {fileID: 1649690556, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
   greenBallAir: {fileID: -2142109384, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
   greenBallIdle: {fileID: 435682972, guid: 67a7f20740a0c8e47bf241ac04ff96a7, type: 3}
-  SpawnPoint: {fileID: 1622715619}
+  SpawnPoint: {fileID: 518210459}
   Qbert: {fileID: 680180427}
-  value: 1
   MovementSpeedByTime: 0.3
   isGreenBall: 1
 --- !u!58 &1730850146
@@ -7913,7 +7914,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 652180230, guid: 812f6e3eb36f33942a1600e736d1a3cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8044,4 +8045,4 @@ SceneRoots:
   - {fileID: 1453098667}
   - {fileID: 28986999}
   - {fileID: 601067217}
-  - {fileID: 1622715619}
+  - {fileID: 518210459}
