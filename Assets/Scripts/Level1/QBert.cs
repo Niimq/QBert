@@ -13,6 +13,8 @@ public class QBert : MonoBehaviour
 
     Transform Blocktransform;
 
+    Vector3 InitialPos;
+
     static float yOffset = 0.6f;
 
     public List<GameObject> Blocks;
@@ -59,11 +61,25 @@ public class QBert : MonoBehaviour
         DeathAnimationOverNum = 0;
         GameOverPanel.SetActive(false);
         rigidbody.isKinematic = false;
+        InitialPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (transform.position.y < -5)
+        {
+            SetGameIsRunning(false);
+            DecreamentHealth();
+            transform.position = InitialPos;
+            // and we also have to disable falling effect.
+            CapsuleCollider.isTrigger = false;
+            bCheckLocation = true;
+            rigidbody.gravityScale = 0; 
+            spriteRenderer.sortingOrder = 2;
+        }
+
         if (DeathAnimationOverNum > 1000) // this is to flicker the character for the death animation.
         {
             DeathAnimationWorking = false;
@@ -118,7 +134,7 @@ public class QBert : MonoBehaviour
             }
             else
             {
-                StartCoroutine(SetGameOver());
+                StartCoroutine(DisplayGameOver());
             }
         }
     }
@@ -143,7 +159,7 @@ public class QBert : MonoBehaviour
         Curse.SetActive(false);
     }
 
-    void CheckLocation(float id)
+    void UpdateLocation(float id)
     {
 
         for (int i = 0; i < Blocks.Count; i++)
@@ -233,7 +249,7 @@ public class QBert : MonoBehaviour
         spriteRenderer.enabled = true;
     }
 
-    IEnumerator SetGameOver()
+    IEnumerator DisplayGameOver()
     {
         GameOverPanel.SetActive(true);
         yield return new WaitForSeconds(4.0f);
@@ -312,7 +328,7 @@ public class QBert : MonoBehaviour
 
 
         if (bCheckLocation) // Switch for if we want apply checklocation or not.
-        { CheckLocation(LocationID); }
+        { UpdateLocation(LocationID); }
     }
 
     void OnElevatorA()
