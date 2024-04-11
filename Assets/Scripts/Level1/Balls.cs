@@ -36,34 +36,37 @@ public class Balls : MonoBehaviour
 
     private void Update()
     {
-        if (Qbert.GetComponent<QBert>().GreenBallEffect)
+        if (!Qbert.GetComponent<QBert>().playerHasWon)
         {
-            StartCoroutine(ApplyGreenBallEffect());
-        }
-        else if (Coiley.GetComponent<Coiley>().CoileyAnimationDone && !isGreenBall)
-        {
-            StartCoroutine(ApplyCoileyEffect());
-        }
-        else
-        { 
-            if (Qbert.GetComponent<QBert>().GetGameIsRunning())
+            if (Qbert.GetComponent<QBert>().GreenBallEffect)
             {
-                if (OriginalMovementDone && b_itCanMove)
-                {
-                    StartCoroutine(MoveBallsDown());
-                }
-
-                if (b_InsitCanMove == true)
-                {
-                    Debug.Log("Reached");
-                    StartCoroutine(MoveInstantiateDown());
-                }
+                StartCoroutine(ApplyGreenBallEffect());
+            }
+            else if (Coiley.GetComponent<Coiley>().CoileyAnimationDone && !isGreenBall)
+            {
+                StartCoroutine(ApplyCoileyEffect());
             }
             else
             {
-                ResetSimulation();
+                if (Qbert.GetComponent<QBert>().GetGameIsRunning())
+                {
+                    if (OriginalMovementDone && b_itCanMove)
+                    {
+                        StartCoroutine(MoveBallsDown());
+                    }
+
+                    if (b_InsitCanMove == true)
+                    {
+                        Debug.Log("Reached");
+                        StartCoroutine(MoveInstantiateDown());
+                    }
+                }
+                else
+                {
+                    ResetSimulation();
+                }
             }
-        }      
+        }
     }
 
     IEnumerator ApplyCoileyEffect()

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    public Sprite CompletedBlock;
+    public Sprite CompletedBlock, RawBlockSprite;
     static GameObject QBert;
     SpriteRenderer SpriteRenderer;
 
+    public int SwitchValue;
     public int Level;
 
     public int blockID; // This ID will be overloaded based off of a pattern
@@ -16,6 +17,7 @@ public class Block : MonoBehaviour
     void Start()
     { 
         Switch = false;
+        SwitchValue = 0;
 
         if (QBert == null)
         {
@@ -29,7 +31,19 @@ public class Block : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (QBert.GetComponent<QBert>().playerHasWon)
+        {
+           StartCoroutine(victoryAnimation());
+        }
+ 
         ChangeColor();
+    }
+
+    IEnumerator victoryAnimation()
+    {
+        SpriteRenderer.sprite = RawBlockSprite;
+        yield return new WaitForSeconds(0.1f);
+        SpriteRenderer.sprite = CompletedBlock;
     }
 
     void ChangeColor() 
@@ -38,6 +52,7 @@ public class Block : MonoBehaviour
         {
             SpriteRenderer.sprite = CompletedBlock;
             QBert.GetComponent<QBert>().AddScore(25);
+            SwitchValue = 1;
             Switch = false;
         }
     }

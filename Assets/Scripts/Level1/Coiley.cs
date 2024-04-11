@@ -59,93 +59,96 @@ public class Coiley : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < -2.0f)
+        if (!Qbert.GetComponent<QBert>().playerHasWon)
         {
-            Qbert.GetComponent<QBert>().AddScore(500);
-            CoileyAnimationDone = true;
-            StartCoroutine(SpawnCoileyAfter5Seconds());
-        }
-
-        if (Qbert != null)
-        {
-            if (Qbert.GetComponent<QBert>().GreenBallEffect)
+            if (transform.position.y < -2.0f)
             {
-                StartCoroutine(ApplyGreenBallEffect());
+                Qbert.GetComponent<QBert>().AddScore(500);
+                CoileyAnimationDone = true;
+                StartCoroutine(SpawnCoileyAfter5Seconds());
             }
-            else
-            { 
-                if (Qbert.GetComponent<QBert>().GetGameIsRunning()) // Checking if they collided with eachother or not.
+
+            if (Qbert != null)
+            {
+                if (Qbert.GetComponent<QBert>().GreenBallEffect)
                 {
-
-                    if (itCanMove && !isCoileyJumpingOff)
+                    StartCoroutine(ApplyGreenBallEffect());
+                }
+                else
+                {
+                    if (Qbert.GetComponent<QBert>().GetGameIsRunning()) // Checking if they collided with eachother or not.
                     {
-                        CoileyPreviousID = 0 + CoileyID;
 
-                        bool activeCoiley = Qbert.GetComponent<QBert>().ActivateCoiley; // Coiley gets spawned
-                        if (activeCoiley && CoileyHatched != true)
+                        if (itCanMove && !isCoileyJumpingOff)
                         {
-                            Debug.Log("Coiley!!");
-                            StartCoroutine(MoveCoileyDown());
-                        }
+                            CoileyPreviousID = 0 + CoileyID;
 
-                        if (CoileyHatched == true)
-                        {
-                            if (CoileyID == 16 || CoileyID == 81)
+                            bool activeCoiley = Qbert.GetComponent<QBert>().ActivateCoiley; // Coiley gets spawned
+                            if (activeCoiley && CoileyHatched != true)
                             {
-                                if (Qbert.GetComponent<QBert>().GetOnElavtor())
+                                Debug.Log("Coiley!!");
+                                StartCoroutine(MoveCoileyDown());
+                            }
+
+                            if (CoileyHatched == true)
+                            {
+                                if (CoileyID == 16 || CoileyID == 81)
                                 {
-
-                                    // Time to play the death animation.
-                                    if (CoileyID == 16)
+                                    if (Qbert.GetComponent<QBert>().GetOnElavtor())
                                     {
-                                        i = 1;
-                                        MyAnimator(i);
-                                        itCanMove = false;
-                                        isCoileyJumpingOff = true;
-                                        transform.position += new Vector3(-0.3f, -1.0f) * Time.deltaTime;
-                                        audioSource.PlayOneShot(_snakeFall);
-                                    }
 
-                                    if (CoileyID == 81)
-                                    {
-                                        i = 2;
-                                        MyAnimator(i);
-                                        itCanMove = false;
-                                        isCoileyJumpingOff = true;
-                                        transform.position += new Vector3(0.3f, -1.0f) * Time.deltaTime;
-                                        audioSource.PlayOneShot(_snakeFall);
-                                    }
+                                        // Time to play the death animation.
+                                        if (CoileyID == 16)
+                                        {
+                                            i = 1;
+                                            MyAnimator(i);
+                                            itCanMove = false;
+                                            isCoileyJumpingOff = true;
+                                            transform.position += new Vector3(-0.3f, -1.0f) * Time.deltaTime;
+                                            audioSource.PlayOneShot(_snakeFall);
+                                        }
 
+                                        if (CoileyID == 81)
+                                        {
+                                            i = 2;
+                                            MyAnimator(i);
+                                            itCanMove = false;
+                                            isCoileyJumpingOff = true;
+                                            transform.position += new Vector3(0.3f, -1.0f) * Time.deltaTime;
+                                            audioSource.PlayOneShot(_snakeFall);
+                                        }
+
+                                    }
+                                }
+
+                                if (itCanMove == true) // double checking.
+                                {
+                                    StartCoroutine(CoileyLookWhereYouGoing());
                                 }
                             }
+                        }
 
-                            if (itCanMove == true) // double checking.
+                        if (isCoileyJumpingOff && CoileyHatched)
+                        {
+                            if (i == 1)
                             {
-                                StartCoroutine(CoileyLookWhereYouGoing());
+                                transform.position += new Vector3(-0.3f, -1.0f) * Time.deltaTime * 2;
+                                SpriteRenderer.sortingOrder = 0;
                             }
-                        }
-                    }
+                            else if (i == 2)
+                            {
+                                transform.position += new Vector3(0.3f, -1.0f) * Time.deltaTime * 2;
+                                SpriteRenderer.sortingOrder = 0;
+                            }
 
-                    if (isCoileyJumpingOff && CoileyHatched)
+                        }
+                    }
+                    else // this is where we call the reset simulation.
                     {
-                        if (i == 1)
-                        {
-                            transform.position += new Vector3(-0.3f, -1.0f) * Time.deltaTime * 2;
-                            SpriteRenderer.sortingOrder = 0;
-                        }
-                        else if (i == 2)
-                        {
-                            transform.position += new Vector3(0.3f, -1.0f) * Time.deltaTime * 2;
-                            SpriteRenderer.sortingOrder = 0;
-                        }
-                     
+                        resetCoileySimulation();
                     }
                 }
-                else // this is where we call the reset simulation.
-                {
-                    resetCoileySimulation();
-                }
-            }           
+            }
         }
     }
 

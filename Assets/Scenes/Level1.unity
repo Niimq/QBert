@@ -253,6 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -1413010517, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 7
   blockID: 64
 --- !u!61 &119438565
@@ -483,6 +485,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -1413010517, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 1
   blockID: 1
 --- !u!61 &184585377
@@ -629,6 +633,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 5
   blockID: 24
 --- !u!61 &254922670
@@ -775,6 +781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 6
   blockID: 72
 --- !u!61 &256163434
@@ -921,6 +929,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -1413010517, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 5
   blockID: 81
 --- !u!61 &271722418
@@ -1201,6 +1211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -1413010517, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 7
   blockID: 729
 --- !u!61 &330223600
@@ -1347,6 +1359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -1413010517, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 2
   blockID: 2
 --- !u!61 &331355852
@@ -1493,6 +1507,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 3
   blockID: 6
 --- !u!61 &333513889
@@ -1639,6 +1655,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 7
   blockID: 216
 --- !u!61 &352018148
@@ -1785,6 +1803,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 5
   blockID: 36
 --- !u!61 &354662032
@@ -2036,6 +2056,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 7
   blockID: 144
 --- !u!61 &355901303
@@ -2182,6 +2204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 6
   blockID: 162
 --- !u!61 &432398204
@@ -2470,6 +2494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -1413010517, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 3
   blockID: 9
 --- !u!61 &498976245
@@ -2739,6 +2765,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 6
   blockID: 108
 --- !u!61 &539486661
@@ -3262,6 +3290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -1413010517, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 2
   blockID: 3
 --- !u!61 &623662209
@@ -3408,6 +3438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 4
   blockID: 12
 --- !u!61 &643433460
@@ -3554,6 +3586,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 5
   blockID: 54
 --- !u!61 &653394233
@@ -3904,6 +3938,7 @@ MonoBehaviour:
   - {fileID: 933298094}
   - {fileID: 917418403}
   - {fileID: 1542159882}
+  playerHasWon: 0
 --- !u!95 &680180433
 Animator:
   serializedVersion: 5
@@ -4254,6 +4289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -1413010517, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 5
   blockID: 16
 --- !u!61 &899381980
@@ -4568,6 +4605,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 6
   blockID: 48
 --- !u!61 &952997916
@@ -4820,6 +4859,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -1413010517, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 4
   blockID: 8
 --- !u!61 &1032076597
@@ -5223,6 +5264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -1413010517, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 6
   blockID: 32
 --- !u!61 &1167299466
@@ -5480,6 +5523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -1413010517, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 4
   blockID: 27
 --- !u!61 &1239718289
@@ -5828,6 +5873,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 4
   blockID: 18
 --- !u!61 &1334568337
@@ -6294,6 +6341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 7
   blockID: 486
 --- !u!61 &1567393539
@@ -6525,6 +6574,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -1413010517, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 3
   blockID: 4
 --- !u!61 &1636967678
@@ -6755,6 +6806,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 7
   blockID: 96
 --- !u!61 &1710473927
@@ -6901,6 +6954,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: 1075073555, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -1413010517, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 6
   blockID: 243
 --- !u!61 &1730363408
@@ -7542,6 +7597,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CompletedBlock: {fileID: -1174250143, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  RawBlockSprite: {fileID: -786266466, guid: 3d2b3ebdcdcec6e4cbf0223c0744745e, type: 3}
+  SwitchValue: 0
   Level: 7
   blockID: 324
 --- !u!61 &2088784671

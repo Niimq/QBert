@@ -68,6 +68,7 @@ public class QBert : MonoBehaviour
     int QbertHealthIconIndex = 0;
 
     int Score;
+    public bool playerHasWon;
 
     // Start is called before the first frame update
     void Start()
@@ -92,6 +93,7 @@ public class QBert : MonoBehaviour
         onElevatorA = false;
         onElevatorB = false;
         enableInput = true;
+        playerHasWon = false;
         text.text = ""+Score;
         if (audioClipArray.Length != 0)
         {
@@ -108,84 +110,87 @@ public class QBert : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (transform.position.y < -5)
+        CheckIfPlayerHasWon();
+        if (!playerHasWon)
         {
-            SetGameIsRunning(false);
-            DecreamentHealth();
-            transform.position = InitialPos;
-            // and we also have to disable falling effect.
-            CapsuleCollider.isTrigger = false;
-            bCheckLocation = true;
-            rigidbody.gravityScale = 0; 
-            spriteRenderer.sortingOrder = 2;
-        }
-
-        if (DeathAnimationOverNum > 1000) // this is to flicker the character for the death animation.
-        {
-            DeathAnimationWorking = false;
-        }
-
-        if (!GameOver)
-        {
-
-            if (LocationID % 1 == 0)
+            if (transform.position.y < -5)
             {
-                if (GetGameIsRunning())
-                {
-                    if (bCheckLocation) // Switch for if we want apply checklocation or not.
-                    { UpdateLocation(LocationID); }
+                SetGameIsRunning(false);
+                DecreamentHealth();
+                transform.position = InitialPos;
+                // and we also have to disable falling effect.
+                CapsuleCollider.isTrigger = false;
+                bCheckLocation = true;
+                rigidbody.gravityScale = 0;
+                spriteRenderer.sortingOrder = 2;
+            }
 
-                    if (enableInput)
-                        GetInputs();
+            if (DeathAnimationOverNum > 1000) // this is to flicker the character for the death animation.
+            {
+                DeathAnimationWorking = false;
+            }
+
+            if (!GameOver)
+            {
+
+                if (LocationID % 1 == 0)
+                {
+                    if (GetGameIsRunning())
+                    {
+                        if (bCheckLocation) // Switch for if we want apply checklocation or not.
+                        { UpdateLocation(LocationID); }
+
+                        if (enableInput)
+                            GetInputs();
+                    }
+                    else
+                    {
+                        StartCoroutine(ResetSimulation());
+                    }
+
+                    if (onElevatorA)
+                        OnElevatorA();
+
+                    if (onElevatorB)
+                        OnElevatorB();
+
+                    if (LevelID == 4)
+                    {
+                        ActivateCoiley = true;
+                    }
                 }
                 else
                 {
-                    StartCoroutine(ResetSimulation());
-                }
+                    if (whereToJump == 1)
+                    {
+                        // if left up was pressed.
+                        DyingJumpDirection(1, true);
+                    }
 
-                if (onElevatorA)
-                    OnElevatorA();
-
-                if (onElevatorB)
-                    OnElevatorB();
-
-                if (LevelID == 4)
-                {
-                    ActivateCoiley = true;
+                    if (whereToJump == 4)
+                    {
+                        // Right Up Idle Transation Set
+                        DyingJumpDirection(0, true);
+                    }
                 }
             }
             else
             {
-                if (whereToJump == 1)
+                if (playonce) // we should play the GameOver sound effect only once for Qbert.
                 {
-                    // if left up was pressed.
-                    DyingJumpDirection(1, true);
+                    audioSource.PlayOneShot(audioClipArray[6]);
+                    playonce = false;
                 }
 
-                if (whereToJump == 4)
+                if (DeathAnimationWorking)
                 {
-                    // Right Up Idle Transation Set
-                    DyingJumpDirection(0, true);
-                }               
-            }
-        }
-        else
-        {
-            if (playonce) // we should play the GameOver sound effect only once for Qbert.
-            {
-                audioSource.PlayOneShot(audioClipArray[6]);
-                playonce = false;
-            }
+                    StartCoroutine(PlayDeathAnimation());
+                }
 
-            if (DeathAnimationWorking)
-            {
-                StartCoroutine(PlayDeathAnimation());
-            }
-
-            else
-            {
-                StartCoroutine(DisplayGameOver());
+                else
+                {
+                    StartCoroutine(DisplayGameOver());
+                }
             }
         }
     }
@@ -433,6 +438,22 @@ public class QBert : MonoBehaviour
             }
         }
         
+    }
+
+    void CheckIfPlayerHasWon()
+    {
+        int BlockValue = 0;
+        for (int i = 0; i < Blocks.Count; i++)
+        {           
+            if (Blocks[i].gameObject.GetComponent<Block>().SwitchValue != 0)
+            {
+                BlockValue += Blocks[i].gameObject.GetComponent<Block>().SwitchValue;
+            }
+            if (BlockValue == 28)
+            { 
+                playerHasWon = true;
+            }
+        }
     }
 
     void OnElevatorA()
