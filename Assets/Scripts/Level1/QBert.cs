@@ -10,8 +10,11 @@
 //          0000000000000000000000000000000000000000000000                 
 //**************************QBERT**TABLE**********************\\\
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Xml.Linq;
 using TMPro;
 using Unity.VisualScripting;
@@ -67,6 +70,9 @@ public class QBert : MonoBehaviour
     private List<GameObject> QbertHealthIcon;
     int QbertHealthIconIndex = 0;
 
+    private string filePath;
+    private List<KeyValuePair<string, int>> leaderboard;
+
     int Score;
     public bool playerHasWon;
 
@@ -99,6 +105,7 @@ public class QBert : MonoBehaviour
         {
             audioSource.PlayOneShot(audioClipArray[5]);
         }
+        filePath = Application.persistentDataPath + "/leaderboard.txt";
     }
 
     public void AddScore(int ScoreAmount) // Public Function.
@@ -225,6 +232,7 @@ public class QBert : MonoBehaviour
 
     IEnumerator ResetSimulation()
     {
+       
         yield return new WaitForSeconds(3);
 
         SetGameIsRunning(true);
@@ -313,11 +321,11 @@ public class QBert : MonoBehaviour
 
     AudioClip ReturnRandomJumpSoundEffect()
     {
-        if (Random.value < 0.5f)
+        if (UnityEngine.Random.value < 0.5f)
         {
             return audioClipArray[0];
         }
-        else if (Random.value < 0.5f)
+        else if (UnityEngine.Random.value < 0.5f)
         {
             return audioClipArray[1];
         }
@@ -330,7 +338,7 @@ public class QBert : MonoBehaviour
     
     AudioClip ReturnRandomCurseSoundEffect()
     {
-        if (Random.value < 0.5f)
+        if (UnityEngine.Random.value < 0.5f)
         {
             return audioClipArray[8];
         }
