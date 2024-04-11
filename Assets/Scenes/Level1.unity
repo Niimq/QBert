@@ -3933,7 +3933,8 @@ MonoBehaviour:
   GreenBallEffect: 0
   GameOverPanel: {fileID: 2022509792}
   Curse: {fileID: 2107511624}
-  text: {fileID: 325111989}
+  score: {fileID: 325111989}
+  GameResultMsg: {fileID: 741546929}
   QbertHealthIcon:
   - {fileID: 933298094}
   - {fileID: 917418403}
@@ -4068,7 +4069,7 @@ GameObject:
   - component: {fileID: 741546930}
   - component: {fileID: 741546929}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: GameStateMassage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

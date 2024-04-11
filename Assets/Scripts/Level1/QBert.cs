@@ -57,7 +57,7 @@ public class QBert : MonoBehaviour
     public GameObject Curse;
     new Rigidbody2D rigidbody;
 
-    public TMP_Text text;
+    public TMP_Text score, GameResultMsg;
 
     CapsuleCollider2D CapsuleCollider;
 
@@ -94,7 +94,7 @@ public class QBert : MonoBehaviour
         onElevatorB = false;
         enableInput = true;
         playerHasWon = false;
-        text.text = ""+Score;
+        score.text = ""+Score;
         if (audioClipArray.Length != 0)
         {
             audioSource.PlayOneShot(audioClipArray[5]);
@@ -104,7 +104,7 @@ public class QBert : MonoBehaviour
     public void AddScore(int ScoreAmount) // Public Function.
     {
         Score += ScoreAmount;
-        text.text = ""+Score;
+        score.text = ""+Score;
     }
 
     // Update is called once per frame
@@ -186,12 +186,29 @@ public class QBert : MonoBehaviour
                 {
                     StartCoroutine(PlayDeathAnimation());
                 }
-
                 else
                 {
+                    UpdateGameStatsMsg();
                     StartCoroutine(DisplayGameOver());
                 }
             }
+        }
+        else
+        {
+            UpdateGameStatsMsg();
+            StartCoroutine (DisplayGameOver());
+        }
+    }
+
+    void UpdateGameStatsMsg()
+    {
+        if (GameOver == true)
+        {
+            GameResultMsg.text = "Game Over.";
+        }
+        if (playerHasWon == true)
+        {
+            GameResultMsg.text = "You Won!";
         }
     }
 
