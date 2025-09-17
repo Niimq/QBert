@@ -12,6 +12,7 @@ public class WriteToLeaderBoard : MonoBehaviour
 {
     TMP_InputField InputField;
     TMP_Text Score;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +35,9 @@ public class WriteToLeaderBoard : MonoBehaviour
     }
 
     public void addscoretoleaderboard(string s)
-    { 
-        using (StreamWriter sw = new StreamWriter("LeaderBoard.txt", true))
+    {
+        string filePath = Path.Combine(Application.dataPath, "LeaderBoard.txt");
+        using (StreamWriter sw = new StreamWriter(filePath, true))
         {
             sw.WriteLine(s + ',' + Score.text);
         }

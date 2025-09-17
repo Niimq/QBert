@@ -1,3 +1,2 @@
-Lower,175
-higher,275
-middle,200
+sadsad,100
+Nima,700

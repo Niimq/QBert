@@ -18,11 +18,8 @@ using System.Linq;
 using System.Xml.Linq;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor.Animations;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.FilePathAttribute;
 
 public class QBert : MonoBehaviour
 {

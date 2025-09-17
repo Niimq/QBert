@@ -12,13 +12,14 @@ using UnityEngine.UI;
 
 public class LeaderBoard : MonoBehaviour
 {
-
-    public Button Back;
+    
+    public Button Back, reset;
 
     // Start is called before the first frame update
     void Start()
     {
         Back.onClick.AddListener(goBackToMainMenu);
+        reset.onClick.AddListener(ResetLeaderboard);
         DisplayLeaderboard();
     }
 
@@ -37,40 +38,17 @@ public class LeaderBoard : MonoBehaviour
 
     void DisplayLeaderboard()
     {
-        //    leaderboard = new list<keyvaluepair<string, int>>();
+        string filePath = Path.Combine(Application.dataPath, "LeaderBoard.txt");
+        Debug.Log("Leaderboard file path: " + filePath);
 
-        //    if (file.exists(filepath))
-        //    {
-        //        string[] lines = file.readalllines(filepath);
+        if (!File.Exists(filePath))
+        {
+            leaderboardText.text = "Leaderboard is empty.";
+            return;
+        }
 
-        //        foreach (string line in lines)
-        //        {
-        //            string[] parts = line.split(',');
-        //            if (parts.length == 2)
-        //            {
-        //                string name = parts[0];
-        //                int score;
-        //                if (int32.tryparse(parts[1], out score))
-        //                {
-        //                    leaderboard.add(new keyvaluepair<string, int>(name, score));
-        //                }
-        //                else
-        //                {
-        //                    debug.logwarning("invalid score format in line: " + line);
-        //                }
-        //            }
-        //            else
-        //            {
-        //                debug.logwarning("invalid line format: " + line);
-        //            }
-        //        }
-
-        //        // sort the leaderboard by score in descending order
-        //        leaderboard = leaderboard.orderbydescending(x => x.value).tolist();
-        //    }
-        //}
         List<KeyValuePair<string, int>> leaderboard = new List<KeyValuePair<string, int>>();
-        using (StreamReader sr = new StreamReader("LeaderBoard.txt"))
+        using (StreamReader sr = new StreamReader(filePath))
         {
             string line;
             string[] Parts;
@@ -115,5 +93,18 @@ public class LeaderBoard : MonoBehaviour
                 leaderboardText.text = "Leaderboard is empty.";
             }
         }
+    }
+
+    public void ResetLeaderboard()
+    {
+        string filePath = Path.Combine(Application.dataPath, "LeaderBoard.txt");
+
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+
+        // update UI immediately
+        leaderboardText.text = "Leaderboard is empty.";
     }
 }
